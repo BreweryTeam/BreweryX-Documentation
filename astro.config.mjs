@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
@@ -49,8 +50,9 @@ export default defineConfig({
                 },
             ],
             expressiveCode: {
-                themes: ["slack-dark", "light-plus"]
-            }
+                themes: ["slack-dark", "light-plus"],
+                plugins: [pluginLineNumbers()]
+            },
         }),
         react(),
         tailwind({
