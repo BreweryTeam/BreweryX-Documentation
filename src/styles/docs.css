@@ -1,0 +1,218 @@
+/* Dark mode colors. */
+:root {
+    --__sl-font: Inter;
+
+    --sl-color-accent-low: #00273d;
+    --sl-color-accent: #0071a7;
+    --sl-color-accent-high: #2b6fd4;
+    --sl-color-white: #ffffff;
+    --sl-color-gray-1: #eeeeee;
+    --sl-color-gray-2: #c2c2c2;
+    --sl-color-gray-3: #8b8b8d;
+    --sl-color-gray-4: #58585a;
+    --sl-color-gray-5: #38383a;
+    --sl-color-gray-6: #272729;
+    --sl-color-gray-7: #101012;
+    --sl-color-black: #1b1b1d;
+    --sl-color-hairline-shade: #232325;
+
+    --sl-color-text-invert: white;
+
+    --sl-color-bg: #1b1b1d;
+    --sl-color-bg-nav: #1b1b1d;
+    --sl-color-bg-sidebar: #1b1b1d;
+
+    --sl-icon-color: #ffffff;
+
+    --ec-frm-edBg: #0f0f12 !important;
+    --ec-brdRad: 0.5rem !important;
+
+    --sl-color-bg-inline-code: #15151a !important;
+
+    /* custom */
+    --sl-color-light-gray-1: #2d2d2f;
+    --sl-color-light-gray-2: #28282a;
+    --sl-color-light-gray-3: #242426;
+    --sl-color-light-gray-4: #202022;
+
+    --sl-color-sidebar-link-active: #57555950;
+}
+
+/* Light mode colors. */
+:root[data-theme="light"] {
+    --sl-color-accent-low: #b0deff;
+    --sl-color-accent: #0073aa;
+    --sl-color-accent-high: #003b53;
+    --sl-color-white: #181818;
+    --sl-color-gray-1: #272727;
+    --sl-color-gray-2: #383838;
+    --sl-color-gray-3: #585858;
+    --sl-color-gray-4: #8b8b8b;
+    --sl-color-gray-5: #c2c2c2;
+    --sl-color-gray-6: #eeeeee;
+    --sl-color-gray-7: #f3f3f3;
+    --sl-color-black: #ffffff;
+
+    --sl-color-bg: #ffffff;
+    --sl-color-bg-nav: #ffffff;
+    --sl-color-bg-sidebar: #ffffff;
+
+    --sl-icon-color: #222222;
+
+    --sl-color-bg-inline-code: #eaeaea !important;
+
+    /* custom */
+    --sl-color-light-gray-1: #e6e6e6;
+    --sl-color-light-gray-2: #f2f2f2;
+    --sl-color-light-gray-3: #f9f9f9;
+    --sl-color-light-gray-4: #ffffff;
+
+    --sl-color-sidebar-link-active: #eeeeee;
+}
+
+/* Layout */
+.site-title {
+    color: var(--sl-color-white);
+}
+
+.content-panel {
+    border-top: none !important;
+}
+
+.right-sidebar {
+    border: none !important;
+}
+
+/* Buttons */
+.action.primary {
+    background: rgb(0, 95, 133);
+    background: linear-gradient(162deg, rgba(0, 95, 133, 1) 0%, rgba(184, 0, 160, 1) 100%);
+
+    color: white;
+}
+
+[data-theme="light"] .action.primary {
+    background: rgb(0, 57, 80);
+    background: linear-gradient(162deg, rgba(0, 57, 80, 1) 0%, rgba(126, 0, 110, 1) 100%);
+
+    color: white;
+}
+
+/* File tree */
+starlight-file-tree {
+    background-color: var(--sl-color-gray-7) !important;
+    border-color: var(--ec-brdCol) !important;
+    border-radius: var(--ec-brdRad) !important;
+}
+
+[data-theme="light"] starlight-file-tree {
+    background-color: var(--sl-color-black) !important;
+}
+
+starlight-file-tree .comment {
+    color: #6a9955 !important;
+}
+
+/* Cards */
+.card {
+    background-color: var(--sl-color-black) !important;
+    border-radius: var(--ec-brdRad) !important;
+}
+
+/* Link Cards */
+.sl-link-card {
+    transition:
+        background-color 0.2s,
+        border-color 0.2s;
+}
+
+.sl-link-card:hover {
+    background-color: var(--sl-color-gray-6) !important;
+    border-color: var(--sl-color-gray-4) !important;
+}
+
+[data-theme="light"] .sl-link-card:hover {
+    background-color: var(--sl-color-gray-7) !important;
+}
+
+/* Asides */
+.starlight-aside {
+    border-radius: 0.5rem;
+}
+
+.expressive-code .frame {
+    --code-background: #151517 !important;
+}
+
+[data-theme="light"] .expressive-code .frame {
+    --code-background: var(--sl-color-black) !important;
+}
+
+/* Badges */
+.sl-badge {
+    border: none !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 9999px !important;
+}
+
+/* Pagination Links */
+.pagination-links > a {
+    border-color: var(--sl-color-light-gray-2) !important;
+    background-color: var(--sl-color-light-gray-4) !important;
+    transition:
+        background-color 0.2s,
+        border-color 0.2s;
+}
+
+.pagination-links > a:hover {
+    border-color: var(--sl-color-light-gray-1) !important;
+    background-color: var(--sl-color-light-gray-3) !important;
+}
+
+/* Sidebar */
+.sidebar-content li {
+    /* Remove sidebar vertical lines */
+    border-inline-start: none !important;
+}
+
+.sidebar-content li > a[aria-current="page"] {
+    /* Restyle active link */
+    background-color: var(--sl-color-sidebar-link-active) !important;
+    /* This prevents active link getting bolder */
+    font-weight: initial;
+}
+
+[data-theme="light"] .sidebar-content li > a[aria-current="page"] {
+    /* Prevent active link going white in light mode */
+    color: var(--sl-color-gray-2);
+}
+
+.sidebar-content li > a,
+.sidebar-content summary > .group-label > .large {
+    /* Restyle sub-level titles */
+    font-size: 0.85rem !important;
+    font-weight: normal !important;
+    color: var(--sl-color-gray-2);
+}
+
+.sidebar-content summary > .caret {
+    /* Dim sub-level carets */
+    color: var(--sl-color-gray-2);
+}
+
+.sidebar-content .top-level > li > .large,
+.sidebar-content .top-level > li > details > summary > .group-label > .large {
+    /* Top-level sidebar titles */
+    font-size: 1.125rem !important;
+    font-weight: 800 !important;
+    color: var(--sl-color-white) !important;
+}
+
+.sidebar > starlight-menu-button > button {
+    background-color: var(--sl-color-gray-5);
+}
+
+/* Doc page */
+.content-panel #_top {
+    font-weight: 800 !important;
+}

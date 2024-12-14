@@ -1,0 +1,13 @@
+@font-face {
+    font-family: Inter;
+    src: url(/font/Inter.ttf);
+}
+
+@font-face {
+    font-family: RobotoFlex;
+    src: url(/font/RobotoFlex.ttf);
+}
+
+:root {
+    --navbar-height: 4rem;
+}

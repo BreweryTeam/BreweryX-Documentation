@@ -1,0 +1,12 @@
+---
+import "@/styles/tailwind.css";
+import StarlightPage from "@astrojs/starlight/components/SimpleStarlightPage.astro";
+import Header from "@/components/Header.astro";
+---
+
+<StarlightPage frontmatter={{ title: "BreweryX Documentation" }}>
+    <Header />
+    <div class="mt-[var(--navbar-height)] overflow-y-hidden">
+        <slot />
+    </div>
+</StarlightPage>
