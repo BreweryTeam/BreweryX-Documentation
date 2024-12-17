@@ -25,11 +25,11 @@ export default defineConfig({
                     slug: "docs/welcome",
                 },
                 {
-                    label: "Plugin Usage",
+                    label: "For Server Owners",
                     items: [
                         {
                             label: "Config",
-                            autogenerate: { directory: "docs/plugin-usage/config/" },
+                            autogenerate: { directory: "docs/for-server-owners/config/" },
                             collapsed: true,
                         },
                     ],
