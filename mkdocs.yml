@@ -86,14 +86,8 @@ plugins:
             Documentation: Документация
             Config: Конфигурации
             Other: Прочее
+  - macros
 extra:
-  # alternate:
-  #   - name: English
-  #     link: /en/
-  #     lang: en
-  #   - name: Русский
-  #     link: /ru/
-  #     lang: ru
   status:
     new: Recently updated!
     inprogress: Article is in progress
@@ -104,6 +98,11 @@ extra:
     - icon: simple/github
       link: https://github.com/BreweryTeam/BreweryX
       name: Github
+  brewery:
+    download_link: https://modrinth.com/plugin/breweryx
+    discord_link: https://discord.gg/3FkNaNDnta
+    
+    version_support: 1.8.x - 1.21.4
 nav:
   - '': index.md
   - Documentation:

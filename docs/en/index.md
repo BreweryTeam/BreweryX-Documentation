@@ -16,11 +16,11 @@ icon: fontawesome/solid/house
 
 BreweryX is an actively maintained fork of Brewery which includes many new features, bug fixes and gives support to the inactive plugin!
 
-This Plugin works with **Spigot**, **Paper**, and **Folia** for 1.21.1 - 1.8.x.
+This Plugin works with **Spigot**, **Paper**, and **Folia** for {{ brewery.version_support }}.
 
 [:octicons-info-16: Quick start](guide/recipies.md){ .md-button .md-button--primary }
-[:material-download: Download latest](https://www.spigotmc.org/resources/breweryx.114777/){ .md-button .md-button--primary }
-[:simple-discord: Discord support](https://discord.gg/3FkNaNDnta){ .md-button .md-button--primary }
+[:material-download: Download latest]({{ brewery.download_link }}){ .md-button .md-button--primary }
+[:simple-discord: Discord support]({{ brewery.discord_link }}){ .md-button .md-button--primary }
 
 ## Why i should use Brewery<span class="neon">X</span>?
 
@@ -45,7 +45,7 @@ This Plugin works with **Spigot**, **Paper**, and **Folia** for 1.21.1 - 1.8.x.
 
     Brewery<span class="neon">X</span> is actively maintained, fixes many bugs and adds so many feature into **decade** old plugin!
 
-    Latest versions support, Folia support, [IA & Oraxen support]((https://www.spigotmc.org/resources/iaoraxenaddon-breweryx-addon.114778/)), patches like [this](https://github.com/DieReicheErethons/Brewery/issues/541)!
+    Latest versions support, Folia support, IA & Oraxen support, patches like [this](https://github.com/DieReicheErethons/Brewery/issues/541)!
 
     Also we give out support in our :simple-discord: [Discord](https://discord.gg/3FkNaNDnta)!
 </div>

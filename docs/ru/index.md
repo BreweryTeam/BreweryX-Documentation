@@ -17,11 +17,11 @@ description: Лучший плагин на варку алкоголя
 
 BreweryX это поддерживаемый, активно разрабатываемый плагин, который привносит жизнь в устаревший Brewery.
 
-Плагин работает на **Spigot**, **Paper**, и **Folia** для 1.21.1 - 1.8.x.
+Плагин работает на **Spigot**, **Paper**, и **Folia** для {{ brewery.version_support }}.
 
 [:octicons-info-16: Документация ](ru/guide/recipies.md){ .md-button .md-button--primary }
-[:material-download: Последняя версия](https://www.spigotmc.org/resources/breweryx.114777/){ .md-button .md-button--primary }
-[:simple-discord: Discord поддержка](https://discord.gg/3FkNaNDnta){ .md-button .md-button--primary }
+[:material-download: Последняя версия]({{ brewery.download_link }}){ .md-button .md-button--primary }
+[:simple-discord: Discord поддержка]({{ brewery.discord_link }}){ .md-button .md-button--primary }
 
 <div class="grid cards" markdown>
 
@@ -44,7 +44,7 @@ BreweryX это поддерживаемый, активно разрабаты�
 
     Brewery<span class="neon">X</span> поддерживается - фиксится много багов, добавляется много новых фич!
 
-    Поддержка последних версий, поддержка Folia, [поддержка предметов из IA & Oraxen]((https://www.spigotmc.org/resources/iaoraxenaddon-breweryx-addon.114778/)), фиксы [вот такого](https://github.com/DieReicheErethons/Brewery/issues/541) недоразумения!
+    Поддержка последних версий, поддержка Folia, поддержка предметов из IA & Oraxen, фиксы [вот такого](https://github.com/DieReicheErethons/Brewery/issues/541) недоразумения!
 
     А также у нас есть помощь админам в :simple-discord: [Discord](https://discord.gg/3FkNaNDnta)!
 </div>
