@@ -1,11 +1,67 @@
 ---
 import BreweryLayout from "@/layouts/BreweryLayout.astro";
+import BreweryX from "@/components/BreweryX.astro";
+import { Image } from "astro:assets";
+import meta from "@/lib/meta";
+
+import banner from "@/assets/img/banner-fade.png";
+
+const badges = [
+    {
+        href: meta.download.modrinrth,
+        img: "https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg",
+        alt: "Download from Modrinth",
+    },
+    {
+        href: "/docs/welcome",
+        img: "https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/documentation/generic_vector.svg",
+        alt: "Read the Documentation",
+    },
+    {
+        href: meta.discord,
+        img: "https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_vector.svg",
+        alt: "Chat with us on Discord",
+    },
+];
 ---
 
 <BreweryLayout>
-    <div class="w-full flex flex-col">
-        <div class="flex flex-col justify-center items-center sm:min-h-[36rem] mt-6 mx-5">
-            Plugin for an alternate brewing process, including alcoholic Potions.
+    <div class="flex flex-col">
+        <div class="relative w-full flex flex-col h-[calc(90dvh-var(--navbar-height))]">
+            <Image class="absolute w-full h-full -z-40 object-cover object-bottom" src={banner} alt="Banner" />
+            <div class="w-full h-full flex justify-center items-center">
+                <div class="w-full m-6 sm:m-8 max-w-[70rem] flex flex-col items-center gap-3.5">
+                    <span class="text-6xl sm:text-8xl font-black drop-shadow-lg">
+                        <BreweryX />
+                    </span>
+                    <span class="text-zinc-100 drop-shadow-xl"
+                        >Plugin for an alternate brewing process, including alcoholic Potions.</span
+                    >
+                    <div class="badge-container flex flex-col sm:flex-row items-center gap-0 sm:gap-2">
+                        {
+                            badges.map((badge) => (
+                                <a href={badge.href}>
+                                    <img alt={badge.alt} height="56" src={badge.img} />
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="relative w-full flex justify-center">Better description (TODO)</div>
+        <div class="relative w-full flex justify-center">
+            <span class="text-4xl font-bold">Why or something (TODO)</span>
+        </div>
+        <div class="relative w-full flex justify-center">
+            <span class="text-4xl font-bold">Team (TODO)</span>
         </div>
     </div>
 </BreweryLayout>
+
+<style>
+    .badge-container a {
+        text-decoration: none;
+        filter: drop-shadow(0 0 0.3rem rgba(0, 0, 0, 0.25));
+    }
+</style>

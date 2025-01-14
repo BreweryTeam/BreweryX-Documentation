@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-import breweryxLogo from "@/assets/img/breweryx.png";
+import breweryxLogo from "@/assets/img/favicon.png";
 
 const links = {
     left: [
@@ -17,10 +17,21 @@ const links = {
 <div
     class="fixed left-0 top-0 right-0 h-[var(--navbar-height)] flex items-stretch bg-zinc-900 border-b border-b-zinc-800"
 >
-    <div class="flex justify-between items-center p-2">
+    <div class="w-full flex justify-between items-center ml-3 mr-6">
         <div class="flex items-center gap-2">
-            <Image class="h-10 w-auto mx-2 mr-4" alt="BreweryX Logo" src={breweryxLogo} />
-            {links.left.map((link) => <a class="header-link" href={link.href}>{link.label}</a>)}
+            <a class="flex items-center no-underline" href="/">
+                <Image class="h-12 w-auto mx-2 mr-4" alt="BreweryX Logo" src={breweryxLogo} />
+                <span class="text-white text-2xl font-bold">BreweryX</span>
+            </a>
+        </div>
+        <div class="flex gap-2">
+            {
+                links.left.map((link) => (
+                    <a class="header-link" href={link.href}>
+                        {link.label}
+                    </a>
+                ))
+            }
         </div>
     </div>
 </div>

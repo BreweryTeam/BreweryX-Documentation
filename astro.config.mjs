@@ -12,8 +12,7 @@ export default defineConfig({
         starlight({
             title: "BreweryX",
             logo: {
-                src: "./src/assets/img/breweryx.png",
-                replacesTitle: true,
+                src: "./src/assets/img/favicon.png",
             },
             customCss: ["./src/styles/globals.css", "./src/styles/docs.css"],
             social: {
