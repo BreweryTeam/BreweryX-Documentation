@@ -1,12 +1,19 @@
 ---
 import "@/styles/tailwind.css";
+import { twMerge } from "tailwind-merge";
 import StarlightPage from "@astrojs/starlight/components/SimpleStarlightPage.astro";
 import Header from "@/components/Header.astro";
+
+interface Props {
+    disableNavBarOffset?: boolean;
+}
+
+const { disableNavBarOffset } = Astro.props;
 ---
 
 <StarlightPage frontmatter={{ title: "BreweryX Documentation" }}>
     <Header />
-    <div class="mt-[var(--navbar-height)] overflow-y-hidden">
+    <div class={twMerge("overflow-y-hidden", !disableNavBarOffset && "mt-[var(--navbar-height)]")}>
         <slot />
     </div>
 </StarlightPage>
