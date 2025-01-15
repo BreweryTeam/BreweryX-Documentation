@@ -112,8 +112,12 @@ Our awesome team!
         <figcaption>**Vutka1** - Translations & Mod</figcaption>
     </figure>
 
-    Credits to DieReicheErethons & Sn0wStorm as the original authors of [Brewery](https://github.com/DieReicheErethons/Brewery)
-    You can also be here! If you want to contribute - feel free to tell us in [our Discord](https://discord.gg/3FkNaNDnta)!
 
 
 </div>
+
+
+# Other Contributors
+
+Credits to DieReicheErethons & Sn0wStorm as the original authors of [Brewery](https://github.com/DieReicheErethons/Brewery)
+You can also be here! If you want to contribute - feel free to tell us in [our Discord](https://discord.gg/3FkNaNDnta)!
