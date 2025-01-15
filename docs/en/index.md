@@ -51,7 +51,7 @@ This Plugin works with **Spigot**, **Paper**, and **Folia** for {{ brewery.versi
 </div>
 
 
-## Contributors
+## The Brewery Team
 
 Our awesome team!
 
@@ -60,7 +60,9 @@ Our awesome team!
 
     <figure markdown="span">
         ![Jsinco](https://avatars.githubusercontent.com/u/67713846?v=4){ align=right width="150" }
-        <figcaption style="text-align: center;" markdown="1">**Jsinco** - Lead Developer</figcaption>
+        <figcaption>
+            **Jsinco** - Developer
+        </figcaption>
     </figure>
 
 </div>
@@ -77,38 +79,40 @@ Our awesome team!
 - 
 
     <figure markdown="span">
+        ![Nadwey](https://avatars.githubusercontent.com/u/81181783?v=4){ width="150" }
+        <figcaption>**Nadwey** - Developer</figcaption>
+    </figure>
+
+-  
+
+    <figure markdown="span">
         ![Szarkan](https://avatars.githubusercontent.com/u/150809885?v=4){ width="150" }
-        <figcaption>**szarkan** - I made this wiki!</figcaption>
+        <figcaption>**szarkan** - Contributor</figcaption>
+        <figcaption>(I made this wiki!)</figcaption>
     </figure>
 
 -  
 
     <figure markdown="span">
-        ![TTTheKing](https://avatars.githubusercontent.com/u/2845957?v=4){ width="150" }
-        <figcaption>**TTTheKing** - Original Author</figcaption>
+        ![Thorinwasher](https://avatars.githubusercontent.com/u/37477983?v=4){ width="150" }
+        <figcaption>**Thorinwasher** - Contributor</figcaption>
     </figure>
 
 -  
 
     <figure markdown="span">
-        ![Sn0wStorm](https://avatars.githubusercontent.com/u/4077108?v=4){ width="150" }
-        <figcaption>**Sn0wStorm** - Original Author</figcaption>
-    </figure>
-
--  
-
-    <figure markdown="span">
-        ![Grafe](https://avatars.githubusercontent.com/u/2846040?v=4){ width="150" }
-        <figcaption>**Grafe** - Original Author</figcaption>
+        ![Tisawesomeness](https://avatars.githubusercontent.com/u/17386338?v=4){ width="150" }
+        <figcaption>**Tisawesomeness** - Contributor</figcaption>
     </figure>
 
 - 
 
     <figure markdown="span">
-        ![You](https://cravatar.eu/avatar/crijgh/600.png){ width="150" }
-        <figcaption>**You**</figcaption>
+        ![Vutka1](https://avatars.githubusercontent.com/u/93795732?v=4){ width="150" }
+        <figcaption>**Vutka1** - Translations & Mod</figcaption>
     </figure>
 
+    Credits to DieReicheErethons & Sn0wStorm as the original authors of [Brewery](https://github.com/DieReicheErethons/Brewery)
     You can also be here! If you want to contribute - feel free to tell us in [our Discord](https://discord.gg/3FkNaNDnta)!
 
 
