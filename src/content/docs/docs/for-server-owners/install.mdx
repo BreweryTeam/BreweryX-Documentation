@@ -1,0 +1,66 @@
+---
+title: "Install"
+---
+
+import { Steps } from "@astrojs/starlight/components";
+import meta from "@/lib/meta.ts";
+
+## Requirements
+
+- **Java 17+**
+- Spigot/Paper 1.8.x - 1.21.4
+
+:::caution[Minecraft \<1.18]
+
+Versions of Minecraft prior to 1.18 use Java versions older than 17. BreweryX will **not** work on these versions unless you update Java!
+
+:::
+
+## First Install
+
+<Steps>
+
+1. Download the plugin from one of the following sources:
+
+    - [Modrinth](https://modrinth.com/plugin/breweryx) (recommended)
+    - [Hangar](https://hangar.papermc.io/Jsinco/BreweryX)
+    - [GitHub Releases](https://github.com/BreweryTeam/BreweryX/releases)
+    - [Our Jenkins](https://ci.nadwey.pl/) (dev builds, not recommended)
+
+2. Add the plugin
+
+    - Stop the Server
+    - Put the JAR into the `/plugins` directory
+    - Start the Server
+
+3. Congratulations, BreweryX is now installed
+
+</Steps>
+
+## Migrating from Brewery
+
+
+:::note
+
+Migrating from the original Brewery plugin to Brewery**X** is usually a smooth process. However, the significant changes in Brewery**X** may lead to some minor complications during the upgrade.
+
+So, if you encounter any issues, please don't hesitate to reach out to us for support on our <a href={meta.discord}>Discord Server</a>
+
+:::
+
+<Steps>
+
+1. Delete the original Brewery
+
+    - Stop the Server
+    - **Delete the original Brewery JAR**
+    - DO NOT delete Brewery's data directory
+
+2. Add Brewery**X** to the Server
+
+    - Put the Brewery**X** JAR into the `/plugins` directory
+    - Start the Server
+
+3. Brewery**X** should automatically migrate the data into its own directory.
+
+</Steps>

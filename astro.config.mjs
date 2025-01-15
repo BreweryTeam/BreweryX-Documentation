@@ -27,6 +27,10 @@ export default defineConfig({
                     label: "For Server Owners",
                     items: [
                         {
+                            label: "Install",
+                            link: "docs/for-server-owners/install",
+                        },
+                        {
                             label: "Config",
                             autogenerate: { directory: "docs/for-server-owners/config/" },
                             collapsed: true,
@@ -50,7 +54,7 @@ export default defineConfig({
             ],
             expressiveCode: {
                 themes: ["slack-dark", "light-plus"],
-                plugins: [pluginLineNumbers()]
+                plugins: [pluginLineNumbers()],
             },
         }),
         react(),
