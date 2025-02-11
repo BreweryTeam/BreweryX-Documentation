@@ -2,13 +2,11 @@
 import BreweryLayout from "@/layouts/BreweryLayout.astro";
 import BreweryX from "@/components/BreweryX.astro";
 import { Image } from "astro:assets";
+import Features from "@/components/home/Features.astro";
+import Team from "@/components/home/Team.astro";
 import meta from "@/lib/meta";
 
 import banner from "@/assets/img/banner-fade.png";
-import cauldronBoiling from "@/assets/video/cauldron-boiling.webm";
-import distilling from "@/assets/video/distilling.webm";
-import drunkness from "@/assets/img/drunkness.png";
-import aging from "@/assets/video/aging.webm";
 
 const badges = [
     {
@@ -22,7 +20,7 @@ const badges = [
         alt: "Read the Documentation",
     },
     {
-        href: meta.discord,
+        href: meta.media.discord,
         img: "https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_vector.svg",
         alt: "Chat with us on Discord",
     },
@@ -53,78 +51,28 @@ const badges = [
                 </div>
             </div>
         </div>
-        <div class="relative mb-8 flex w-full flex-col items-center justify-center gap-7">
+        <div class="relative my-16 flex w-full flex-col items-center justify-center gap-7">
+            <div class="pointer-events-none absolute inset-0 -z-10">
+                <div class="absolute top-0 right-0 h-[500px] w-[500px] bg-fuchsia-500/8 blur-[100px]"></div>
+                <div class="absolute bottom-0 left-[10%] h-[500px] w-[500px] bg-red-500/10 blur-[100px]"></div>
+            </div>
             <span class="block text-4xl font-bold">Features</span>
-            <div class="mx-3 sm:mx-6">
-                <div class="grid w-full max-w-[88rem] gap-6 lg:grid-cols-5">
-                    <div class="feature lg:col-span-3">
-                        <div class="feature-background">
-                            <video muted autoplay loop>
-                                <source src={cauldronBoiling} />
-                            </video>
-                            <span class="feature-background-shadow"></span>
-                        </div>
-                        <div class="feature-content">
-                            <div class="m-6">
-                                <span class="font-bold">Brewing</span>
-                                <span class="font-thin text-zinc-300"
-                                    >Let your player brew any drink you can imagine and add very cool effects to it in
-                                    most unique way possible!</span
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feature lg:col-span-2">
-                        <div class="feature-background">
-                            <video muted autoplay loop>
-                                <source src={distilling} />
-                            </video>
-                            <span class="feature-background-shadow"></span>
-                        </div>
-                        <div class="feature-content">
-                            <div class="m-6">
-                                <span class="font-bold">Distilling</span>
-                                <span class="font-thin text-zinc-300"
-                                    >Refine your brews with glowstone filters, turning simple brews into strong drinks!</span
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feature lg:col-span-2">
-                        <div class="feature-background">
-                            <Image src={drunkness} alt="Drunkness" />
-                            <span class="feature-background-shadow"></span>
-                        </div>
-                        <div class="feature-content">
-                            <div class="m-6">
-                                <span class="font-bold">Drunkness...</span>
-                                <span class="font-thin text-zinc-300"
-                                    >Watch your limits, or you'll be wobbling through the streets!</span
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feature lg:col-span-3">
-                        <div class="feature-background">
-                            <video muted autoplay loop>
-                                <source src={aging} />
-                            </video>
-                            <span class="feature-background-shadow"></span>
-                        </div>
-                        <div class="feature-content">
-                            <div class="m-6">
-                                <span class="font-bold">Aging</span>
-                                <span class="font-thin text-zinc-300"
-                                    >Some drinks require patience. Let them mature in barrels for a richer flavor!</span
-                                >
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="mx-6">
+                <Features />
             </div>
         </div>
-        <div class="relative flex w-full justify-center">
-            <span class="text-4xl font-bold">Team (TODO)</span>
+        <div class="relative my-16 flex w-full justify-center">
+            <div class="pointer-events-none absolute inset-0 -z-10">
+                <div class="absolute -top-[10rem] right-0 h-[700px] w-[700px] bg-green-500/8 blur-[100px]"></div>
+                <div class="absolute top-[20%] left-[6%] h-[400px] w-[400px] bg-indigo-500/8 blur-[100px]"></div>
+                <div class="absolute bottom-0 left-[20%] h-[500px] w-[700px] bg-cyan-500/8 blur-[100px]"></div>
+            </div>
+            <div class="flex flex-col items-center gap-6">
+                <span class="text-4xl font-bold">Team</span>
+                <div class="mx-8 max-w-[80rem]">
+                    <Team />
+                </div>
+            </div>
         </div>
     </div>
 </BreweryLayout>
@@ -133,47 +81,5 @@ const badges = [
     .badge-container a {
         text-decoration: none;
         filter: drop-shadow(0 0 0.3rem rgba(0, 0, 0, 0.25));
-    }
-
-    .feature {
-        position: relative;
-        overflow: hidden;
-        height: 28rem;
-        border-radius: 2rem;
-
-        box-shadow: 0px 0px 24px 0px rgba(252, 168, 80, 0.1);
-    }
-
-    .feature-background {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-    }
-
-    .feature-background > video,
-    .feature-background > img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -2;
-    }
-
-    .feature-background-shadow {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-
-        box-shadow: inset 0px 0px 80px 35px rgba(0, 0, 0, 1);
-    }
-
-    .feature-content {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: end;
-        font-size: 1.15rem;
     }
 </style>
