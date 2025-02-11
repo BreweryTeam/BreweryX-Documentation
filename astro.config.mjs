@@ -34,7 +34,7 @@ export default defineConfig({
                             link: "docs/for-server-owners/install",
                         },
                         {
-                            label: "Config",
+                            label: "Configuration",
                             autogenerate: { directory: "docs/for-server-owners/config/" },
                             collapsed: true,
                         },
