@@ -27,7 +27,7 @@ const links = {
         <div class="flex gap-2">
             {
                 links.left.map((link) => (
-                    <a class="header-link" href={link.href}>
+                    <a class=" text-white no-underline" href={link.href}>
                         {link.label}
                     </a>
                 ))
@@ -35,9 +35,3 @@ const links = {
         </div>
     </div>
 </div>
-
-<style>
-    .header-link {
-        @apply text-white no-underline;
-    }
-</style>
