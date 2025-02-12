@@ -6,13 +6,13 @@ title: "Recipes"
 
 Creating new recipe is somewhat easy with BreweryX. All you need is to follow this guide!
 
-***
+---
 
 ## Name*s* of a drink: `name`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|  Yes      | `Bad Name/Name/Good Name`|None|
+| Required? | Value                     | Default Value |
+| --------- | ------------------------- | ------------- |
+| Yes       | `Bad Name/Name/Good Name` | None          |
 
 The name of the drink. Can contain three variations, each for different quality of a drink. It'll look like that:
 
@@ -25,7 +25,7 @@ Name supports ampersand and HEX color codes:
 
 ```yaml
 ColorfulBrew:
-    name: '&8Bad brew/Brew/&#ffb424Good brew'
+    name: "&8Bad brew/Brew/&#ffb424Good brew"
 ```
 
 If you don't want to do names based on brew's quality - just put one name
@@ -35,16 +35,16 @@ TestBrew:
     name: Brew
 ```
 
-***
+---
 
 ## Ingredients: `ingredients`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-| Yes |`- ItemName/Amount`|None|
+| Required? | Value               | Default Value |
+| --------- | ------------------- | ------------- |
+| Yes       | `- ItemName/Amount` | None          |
 
 !!! warning ""
-    Required at all time
+Required at all time
 
 Ingredients needed for the brew. Possible values:
 
@@ -73,13 +73,13 @@ TestBrew:
         - blue_flowers/2 # You'll need 2 items defined in brewery's CustomItems
 ```
 
-***
+---
 
 ## Time to brew: `cookingtime`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|Yes|Number in minutes|None|
+| Required? | Value             | Default Value |
+| --------- | ----------------- | ------------- |
+| Yes       | Number in minutes | None          |
 
 How much in minutes player need to brew. Can be checked with right clicking Clock on Cauldron.
 
@@ -89,13 +89,13 @@ TestBrew:
     cookingtime: 12 # 12 minutes
 ```
 
-***
+---
 
 ## How much distilling: `distillruns`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|No, unless `distilltime` present|Number|0|
+| Required?                        | Value  | Default Value |
+| -------------------------------- | ------ | ------------- |
+| No, unless `distilltime` present | Number | 0             |
 
 How much times player need to distill brew
 
@@ -105,13 +105,13 @@ TestBrew:
     distillruns: 4
 ```
 
-***
+---
 
 ## Distill time: `distilltime`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|No|Number in seconds|0|
+| Required? | Value             | Default Value |
+| --------- | ----------------- | ------------- |
+| No        | Number in seconds | 0             |
 
 How much it will take to distill brew one time
 
@@ -121,37 +121,37 @@ TestBrew:
     distilltime: 10
 ```
 
-***
+---
 
 ## Type of barrel wood: `wood`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|No|Wood type's number|0|
+| Required? | Value              | Default Value |
+| --------- | ------------------ | ------------- |
+| No        | Wood type's number | 0             |
 
 Type of barrel wood needed to age brew properly. Posible values:
 
-- 0 - any wood 
+- 0 - any wood
 
-- 1 - Birch 
+- 1 - Birch
 
-- 2 - Oak 
+- 2 - Oak
 
-- 3 - Jungle 
+- 3 - Jungle
 
-- 4 - Spruce 
+- 4 - Spruce
 
-- 5 - Acacia 
+- 5 - Acacia
 
-- 6 - Dark Oak 
+- 6 - Dark Oak
 
-- 7 - Crimson 
+- 7 - Crimson
 
-- 8 - Warped 
+- 8 - Warped
 
-- 9 - Mangrove 
+- 9 - Mangrove
 
-- 10 - Cherry 
+- 10 - Cherry
 
 - 11 - Bamboo
 
@@ -163,13 +163,13 @@ TestBrew:
     wood: 4 # Spruce barrel
 ```
 
-***
+---
 
 ## Aging time: `age`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|No|Number in MC days|0|
+| Required? | Value             | Default Value |
+| --------- | ----------------- | ------------- |
+| No        | Number in MC days | 0             |
 
 How many MC days brew have to be in barrel for best quality.
 
@@ -179,14 +179,13 @@ TestBrew:
     age: 12 # 12 minecraft days
 ```
 
-***
+---
 
 ## Color of a drink: `color`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|No|HEX without `#` or color's name|`WHITE`|
-
+| Required? | Value                           | Default Value |
+| --------- | ------------------------------- | ------------- |
+| No        | HEX without `#` or color's name | `WHITE`       |
 
 Color of a potion. Can be HEX color or `DARK_RED`, `RED`, `BRIGHT_RED`, `ORANGE`, `YELLOW`, `PINK`, `PURPLE`, `BLUE`, `CYAN`, `WATER`, `TEAL`, `OLIVE`, `GREEN`, `LIME`, `BLACK`, `GREY`, `BRIGHT_GREY`, `WHITE`
 
@@ -198,13 +197,13 @@ TestBrew:
     color: '99FF33'
 ```
 
-***
+---
 
 ## Difficulty of brewing: `difficulty`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|Yes|Number 1 - 10|None|
+| Required? | Value         | Default Value |
+| --------- | ------------- | ------------- |
+| Yes       | Number 1 - 10 | None          |
 
 Accuracy needed to get good quality, from `1` to `10`, where `1` is very unaccurate and `10` is very precise.
 
@@ -216,13 +215,13 @@ TestBrew:
     difficulty: 5
 ```
 
-***
+---
 
 ## Alcohol level: `alcohol`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|No|Number 0 - 100|0|
+| Required? | Value          | Default Value |
+| --------- | -------------- | ------------- |
+| No        | Number 0 - 100 | 0             |
 
 How much alcohol "points" player will get after drinking, from `0` to `100`, where `0` is no alcohol and `100` player will most likely faint
 
@@ -232,13 +231,13 @@ TestBrew:
     alcohol: 45
 ```
 
-***
+---
 
 ## Lore of brew: `lore`
 
 | Required? | Value | Default Value |
 | --------- | ----- | ------------- |
-|No|List|None|
+| No        | List  | None          |
 
 Lore of a potion. It may vary depending on the quality of the drink.
 
@@ -246,19 +245,19 @@ Lore of a potion. It may vary depending on the quality of the drink.
 TestBrew:
     name: Bad Brew/Brew/Good Brew
     lore:
-    - "This text will always be present"
-    - + "This text will be present if brew has bad quality"
-    - ++ "This text will be present if brew has normal quality"
-    - +++ "This text will be present if brew has good quality"
+        - "This text will always be present"
+        - + "This text will be present if brew has bad quality"
+        - ++ "This text will be present if brew has normal quality"
+        - +++ "This text will be present if brew has good quality"
 ```
 
-***
+---
 
 ## Executing server commands on drink: `servercommands`
 
 | Required? | Value | Default Value |
 | --------- | ----- | ------------- |
-|No|List|None|
+| No        | List  | None          |
 
 Commands that will execute as server. They can be executed depending on the quality of the drink.
 
@@ -268,20 +267,20 @@ Adding `\<number>s` at the end of a command will add delay to execution.
 TestBrew:
     name: Bad Brew/Brew/Good Brew
     servercommands:
-    - say This will execute no matter what!
-    - say This message will be delayed by 5 seconds! \5s
-    - + kill %player% # This will execute if brew quality is bad
-    - ++ heal %player% # This will execute if brew quality is normal
-    - +++ op %player% # This will execute if brew quality is good. Also don't give OP to players =)
+        - say This will execute no matter what!
+        - say This message will be delayed by 5 seconds! \5s
+        - + kill %player% # This will execute if brew quality is bad
+        - ++ heal %player% # This will execute if brew quality is normal
+        - +++ op %player% # This will execute if brew quality is good. Also don't give OP to players =)
 ```
 
-***
+---
 
 ## Executing commands as player: `playercommands`
 
 | Required? | Value | Default Value |
 | --------- | ----- | ------------- |
-|No|List|None|
+| No        | List  | None          |
 
 Commands that will execute as player. They can be executed depending on the quality of the drink.
 
@@ -291,20 +290,20 @@ Adding `\<number>s` at the end of a command will add delay to execution.
 TestBrew:
     name: Bad Brew/Brew/Good Brew
     playercommands:
-    - me This will execute no matter what!
-    - me This message will be delayed by 5 seconds! \5s
-    - + suicide # This will execute if brew quality is bad
-    - ++ home # This will execute if brew quality is normal
-    - +++ give %player% diamond 9999 # This will execute if brew quality is good. 
+        - me This will execute no matter what!
+        - me This message will be delayed by 5 seconds! \5s
+        - + suicide # This will execute if brew quality is bad
+        - ++ home # This will execute if brew quality is normal
+        - +++ give %player% diamond 9999 # This will execute if brew quality is good.
 ```
 
-***
+---
 
 ## Message after drinking: `drinkmessage`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|No|String|None|
+| Required? | Value  | Default Value |
+| --------- | ------ | ------------- |
+| No        | String | None          |
 
 Message that will be sent to a player after drinking brew.
 
@@ -314,13 +313,13 @@ TestBrew:
     drinkmessage: "UR DRUNK!"
 ```
 
-***
+---
 
 ## Title after drinking: `drinktitle`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|No|String|None|
+| Required? | Value  | Default Value |
+| --------- | ------ | ------------- |
+| No        | String | None          |
 
 Title message that will be sent to a player after drinking brew.
 
@@ -330,13 +329,13 @@ TestBrew:
     drinktitle: "UR DRUNK AND THIS IS TITLE!"
 ```
 
-***
+---
 
 ## Glint effect: `glint`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|No|bool `true` or `false`|`false`|
+| Required? | Value                  | Default Value |
+| --------- | ---------------------- | ------------- |
+| No        | bool `true` or `false` | `false`       |
 
 Whether brew will have glint effect (as it were enchanted)
 
@@ -346,13 +345,13 @@ TestBrew:
     glint: true
 ```
 
-***
+---
 
 ## CMD of item: `customModelData`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|No|`Bad CMD/CMD/Good CMD`|None|
+| Required? | Value                  | Default Value |
+| --------- | ---------------------- | ------------- |
+| No        | `Bad CMD/CMD/Good CMD` | None          |
 
 Custom model data of a brew, can vary based on quality of a brew.
 
@@ -362,13 +361,13 @@ TestBrew:
     customModelData: 1337/1338/1339
 ```
 
-***
+---
 
 ## Potion effects: `effects`
 
-| Required? | Value | Default Value |
-| --------- | ----- | ------------- |
-|No|`EffectName/level/duration`|None|
+| Required? | Value                       | Default Value |
+| --------- | --------------------------- | ------------- |
+| No        | `EffectName/level/duration` | None          |
 
 Effects that will be given to a player after drinking.
 
@@ -384,21 +383,21 @@ Highest possible Duration: 1638 sec. Instant Effects dont need any duration spec
 TestBrew:
     name: Bad Brew/Brew/Good Brew
     effects:
-      - FIRE_RESISTANCE/20 # Will be given no matter what
-      - WEAKNESS/3-1/50-10 # Better the brew - less Weakness player will have
-      - REGENERATION/1-3/10-50 # Vica versa
+        - FIRE_RESISTANCE/20 # Will be given no matter what
+        - WEAKNESS/3-1/50-10 # Better the brew - less Weakness player will have
+        - REGENERATION/1-3/10-50 # Vica versa
 ```
 
-***
+---
 
 ## Examples
 
 ```yaml
-  g_vodka:
-    name: 'Rancid Vodka/&6Golden Vodka/&6Shimmering Golden Vodka'
+g_vodka:
+    name: "Rancid Vodka/&6Golden Vodka/&6Shimmering Golden Vodka"
     ingredients:
-      - Potato/10
-      - Gold_Nugget/2
+        - Potato/10
+        - Gold_Nugget/2
     cookingtime: 18
     distillruns: 3
     age: 0
@@ -406,14 +405,14 @@ TestBrew:
     difficulty: 6
     alcohol: 20
     effects:
-      - WEAKNESS/28
-      - POISON/4
+        - WEAKNESS/28
+        - POISON/4
 
-  fire_whiskey:
+fire_whiskey:
     name: Powdery Whiskey/Burning Whiskey/Blazing Whiskey
     ingredients:
-      - Wheat/10
-      - Blaze_Powder/2
+        - Wheat/10
+        - Blaze_Powder/2
     cookingtime: 12
     distillruns: 3
     distilltime: 55
@@ -422,15 +421,15 @@ TestBrew:
     color: ORANGE
     difficulty: 7
     alcohol: 28
-    drinkmessage: 'You get a burning feeling in your mouth'
+    drinkmessage: "You get a burning feeling in your mouth"
 
-  hot_choc:
+hot_choc:
     name: Hot Chocolate
     ingredients:
-      - cookie/3
+        - cookie/3
     cookingtime: 2
     color: DARK_RED
     difficulty: 2
     effects:
-      - FAST_DIGGING/40
+        - FAST_DIGGING/40
 ```

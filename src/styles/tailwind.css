@@ -3,6 +3,7 @@
 @variant dark (&:is(.dark *));
 
 @theme {
+    /* shadcn/ui */
     --color-background: hsl(var(--background));
     --color-foreground: hsl(var(--foreground));
 
@@ -40,10 +41,14 @@
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
     --radius-sm: calc(var(--radius) - 4px);
+
+    /* custom */
+    --spacing-wide: 88rem;
 }
 
 @layer base {
     :root {
+        /* shadcn/ui */
         --background: 240 10% 3.9%;
         --foreground: 0 0% 98%;
         --card: 240 10% 3.9%;
