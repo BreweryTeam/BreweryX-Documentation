@@ -43,7 +43,8 @@
     --radius-sm: calc(var(--radius) - 4px);
 
     /* custom */
-    --spacing-wide: 88rem;
+    --spacing-section: 88rem;
+    --spacing-header: 92rem;
 }
 
 @layer base {
