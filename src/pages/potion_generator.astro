@@ -24,7 +24,40 @@ let woodTypes = {
         <div id="potion-generator" class="max-w-header w-full">
             <div class="flex w-full items-center justify-between">
                 <img src="/water_bottle.webp" width="80px" class="inline-block align-middle" />
-                <PotionNameSection />
+                <div class="flex items-center bg-gray-800">
+                    <div class="grid" id="single-name-input">
+                        <label for="potion-name" class="text-center"> Potion name</label>
+                        <input type="text" id="potion-name" class="border-2 border-solid border-gray-400" />
+                    </div>
+                    <div id="multiple-name-input" class="hidden">
+                        <div class="grid">
+                            <label for="low-quality-potion-name" class="text-center"> Low quality</label>
+                            <input
+                                type="text"
+                                id="low-quality-potion-name"
+                                class="w-32 border-2 border-solid border-gray-400"
+                            />
+                        </div>
+                        <div class="grid">
+                            <label for="medium-quality-potion-name" class="text-center"> Medium quality</label>
+                            <input
+                                type="text"
+                                id="medium-quality-potion-name"
+                                class="w-32 border-2 border-solid border-gray-400"
+                            />
+                        </div>
+                        <div class="grid">
+                            <label for="high-quality-potion-name" class="text-center"> High quality</label>
+                            <input
+                                type="text"
+                                id="high-quality-potion-name"
+                                class="w-32 border-2 border-solid border-gray-400"
+                            />
+                        </div>
+                    </div>
+
+                    <button id="switch-quality-names" class="size-8 cursor-pointer bg-red-500"> </button>
+                </div>
             </div>
             <div class="w-full">
                 <div class="grid w-full justify-center" id="ingredients-section">
