@@ -11,10 +11,10 @@ function generateIngredient(): HTMLElement {
     let output = document.createElement("div");
     let textinput = document.createElement("input")
     textinput.type = "text"
-    textinput.classList.add("bg-gray-200")
+    textinput.classList.add("bg-gray-800")
     let numberInput = document.createElement("input")
     numberInput.type = "number"
-    numberInput.classList.add("bg-gray-200")
+    numberInput.classList.add("bg-gray-800")
     let clearButton = document.createElement("button")
     clearButton.textContent = "x"
     clearButton.classList.add("bg-red-500", "size-8")
