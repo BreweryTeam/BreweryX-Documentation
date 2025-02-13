@@ -1,0 +1,23 @@
+---
+import BreweryLayout from "@/layouts/BreweryLayout.astro";
+import PotionNameSection from "../components/potion_editor/PotionNameSection.astro";
+---
+
+<BreweryLayout>
+    <div class="flex w-full justify-center">
+        <div id="potion-generator" class="max-w-header w-full">
+            <div class="flex w-full items-center justify-between">
+                <img src="/water_bottle.webp" width="80px" class="inline-block align-middle" />
+                <PotionNameSection />
+            </div>
+            <div class="w-full">
+                <div class="grid w-full justify-center" id="ingredients-section">
+                    <script src="../script/ingredients_section.ts"></script>
+                    <button id="add-ingredient" class="w-32 cursor-pointer bg-red-500"> + Ingredient</button>
+                </div>
+            </div>
+            <div id="potion-generator-output">hello</div>
+        </div>
+        <script src="../script/potion_generator.ts"></script>
+    </div>
+</BreweryLayout>
