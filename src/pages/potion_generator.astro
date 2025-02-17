@@ -1,6 +1,6 @@
 ---
 import BreweryLayout from "@/layouts/BreweryLayout.astro";
-import PotionNameSection from "../components/potion_editor/PotionNameSection.astro";
+import IngredientsSection from "@/components/potion_editor/IngredientsSection";
 
 let woodTypes = {
     any: { name: "Any", value: 0 },
@@ -55,15 +55,11 @@ let woodTypes = {
                             />
                         </div>
                     </div>
-
                     <button id="switch-quality-names" class="size-8 cursor-pointer bg-red-500"> </button>
                 </div>
             </div>
             <div class="w-full">
-                <div class="grid w-full justify-center" id="ingredients-section">
-                    <script src="../script/ingredients_section.ts"></script>
-                    <button id="add-ingredient" class="w-32 cursor-pointer bg-red-500"> + Ingredient</button>
-                </div>
+                <IngredientsSection />
             </div>
             <div class="flex w-full justify-center">
                 <div class="grid">
