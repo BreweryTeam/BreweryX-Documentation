@@ -2,7 +2,7 @@ import { useSnapshot } from "valtio";
 import type { EditorState } from "../brewery-studio";
 
 export function RecipesEditor({ state }: { state: EditorState }) {
-    const snap = useSnapshot(state);
+    const recipes = useSnapshot(state.recipes);
 
     function addRecipe() {
         for (let i = 0; i < 1000; i++)
@@ -15,7 +15,7 @@ export function RecipesEditor({ state }: { state: EditorState }) {
     return (
         <>
             <div className="flex flex-col">
-                {snap.recipes.map((recipe) => (
+                {recipes.map((recipe) => (
                     <div key={recipe.id}>
                         id: {recipe.id}, name: {recipe.name}
                     </div>
