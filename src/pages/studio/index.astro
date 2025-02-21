@@ -1,0 +1,10 @@
+---
+import BreweryLayout from "@/layouts/BreweryLayout.astro";
+import BreweryStudio from "@/components/studio/brewery-studio";
+---
+
+<BreweryLayout>
+    <div class="relative w-full">
+        <BreweryStudio client:only="react" />
+    </div>
+</BreweryLayout>
