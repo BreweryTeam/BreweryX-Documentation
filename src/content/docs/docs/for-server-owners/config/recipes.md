@@ -269,9 +269,9 @@ TestBrew:
     servercommands:
         - say This will execute no matter what!
         - say This message will be delayed by 5 seconds! \5s
-        - + kill %player% # This will execute if brew quality is bad
-        - ++ heal %player% # This will execute if brew quality is normal
-        - +++ op %player% # This will execute if brew quality is good. Also don't give OP to players =)
+        - + kill %player_name% # This will execute if brew quality is bad
+        - ++ heal %player_name% # This will execute if brew quality is normal
+        - +++ op %player_name% # This will execute if brew quality is good. Also don't give OP to players =)
 ```
 
 ---
@@ -294,7 +294,7 @@ TestBrew:
         - me This message will be delayed by 5 seconds! \5s
         - + suicide # This will execute if brew quality is bad
         - ++ home # This will execute if brew quality is normal
-        - +++ give %player% diamond 9999 # This will execute if brew quality is good.
+        - +++ give %player_name% diamond 9999 # This will execute if brew quality is good.
 ```
 
 ---
