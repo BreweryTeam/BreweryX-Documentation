@@ -9,7 +9,7 @@ import { Tabs, TabItem } from "@astrojs/starlight/components";
 Addon commands should be registered through the `registerCommand` method in the `onAddonEnable` method.
 Addon commands will appear as subcommands for the `/breweryx` command in-game.
 
-<Tabs syncKey="addon-commands">
+<Tabs syncKey="language">
     <TabItem label="Java">
 ```java title="MyCommand.java" frame="code"
 public class MyCommand implements AddonCommand {
@@ -74,7 +74,7 @@ Events in addons should be declared the same way as they are in normal Bukkit pl
 The only difference being, is that you must register them through your addons `registerListener`
 method in the `onAddonEnable` method.
 
-<Tabs syncKey="addon-events">
+<Tabs syncKey="language">
     <TabItem label="Java">
 ```java title="MyListener.java" frame="code"
 public class MyListener implements Listener {
