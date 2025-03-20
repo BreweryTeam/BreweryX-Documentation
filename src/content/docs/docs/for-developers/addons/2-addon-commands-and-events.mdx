@@ -1,0 +1,107 @@
+---
+title: "2. Addon Commands & Events"
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+### Addon Commands
+
+Addon commands should be registered through the `registerCommand` method in the `onAddonEnable` method.
+Addon commands will appear as subcommands for the `/breweryx` command in-game.
+
+<Tabs syncKey="addon-commands">
+    <TabItem label="Java">
+```java title="MyCommand.java" frame="code"
+public class MyCommand implements AddonCommand {
+    @Override
+    public void execute(BreweryPlugin breweryPlugin, Lang lang, CommandSender sender, String label, String[] args) {
+        sender.sendMessage("Hello, from MyCommand!");
+    }
+
+    @Override
+    public List<String> tabComplete(BreweryPlugin breweryPlugin, CommandSender sender, String label, String[] args) {
+        return null;
+    }
+
+    @Override
+    public String getPermission() {
+        return "brewery.myaddon.command";
+    }
+
+    @Override
+    public boolean playerOnly() {
+        return false;
+    }
+}
+
+@Override
+public void onAddonEnable() {
+    registerCommand("mycommand", new MyCommand());
+}
+```
+    </TabItem>
+    <TabItem label="Kotlin">
+```kotlin title="MyCommand.kt" frame="code"
+class MyCommand : AddonCommand {
+    override fun execute(breweryPlugin: BreweryPlugin, lang: Lang, sender: CommandSender, label: String, args: Array<String>) {
+        sender.sendMessage("Hello, from MyCommand!")
+    }
+
+    override fun tabComplete(breweryPlugin: BreweryPlugin, sender: CommandSender, label: String, args: Array<String>): List<String>? {
+        return null
+    }
+
+    override fun getPermission(): String {
+        return "brewery.myaddon.command"
+    }
+
+    override fun playerOnly(): Boolean {
+        return false
+    }
+}
+
+override fun onAddonEnable() {
+    registerCommand("mycommand", MyCommand())
+}
+```
+    </TabItem>
+</Tabs>
+
+
+### Events in addons
+
+Events in addons should be declared the same way as they are in normal Bukkit plugins.
+The only difference being, is that you must register them through your addons `registerListener`
+method in the `onAddonEnable` method.
+
+<Tabs syncKey="addon-events">
+    <TabItem label="Java">
+```java title="MyListener.java" frame="code"
+public class MyListener implements Listener {
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        event.getPlayer().sendMessage("Hello, from MyListener!");
+    }
+}
+
+@Override
+public void onAddonEnable() {
+    registerListener(new MyListener());
+}
+```
+    </TabItem>
+    <TabItem label="Kotlin">
+```kotlin title="MyListener.kt" frame="code"
+class MyListener : Listener {
+    @EventHandler
+    fun onPlayerJoin(event: PlayerJoinEvent) {
+        event.player.sendMessage("Hello, from MyListener!")
+    }
+}
+
+override fun onAddonEnable() {
+    registerListener(MyListener())
+}
+```
+    </TabItem>
+</Tabs>

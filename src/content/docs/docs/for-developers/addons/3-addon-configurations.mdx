@@ -1,0 +1,45 @@
+---
+title: "3. Addon Configurations"
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+
+### Configuration files in addons
+
+Addons support configuration files using Okaeri config, 
+which is a powerful and easy-to-use configuration library. 
+
+Lombok is recommended for Java developers to reduce boilerplate code.
+
+<Tabs syncKey="addon-configurations">
+    <TabItem label="Java">
+```java title="MyConfig.java" frame="code"
+@OkaeriConfigFile(fileName = "addon-config.yml")
+@Getter @Setter
+public class MyConfig extends AddonConfigFile {
+    private String message = "Hello, from MyConfig!";
+}
+
+@Override
+public void onAddonEnable() {
+    MyConfig config = getAddonConfigManager().getConfig(MyConfig.class);
+    getLogger().info(config.getMessage());
+}
+```
+    </TabItem>
+    <TabItem label="Kotlin">
+```kotlin title="MyConfig.kt" frame="code"
+@OkaeriConfigFile(fileName = "addon-config.yml")
+class MyConfig : AddonConfigFile() {
+    // Do not use 'val' for config keys!
+    var message = "Hello, from MyConfig!"
+}
+
+override fun onAddonEnable() {
+    val config = addonConfigManager.getConfig(MyConfig::class.java)
+    logger.info(config.message)
+}
+```
+    </TabItem>
+</Tabs>

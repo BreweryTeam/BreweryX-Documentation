@@ -1,0 +1,70 @@
+---
+title: "1. Creating a project"
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+
+
+BreweryX supports addons that can add new features to the plugin. 
+This can be new brewing recipes, custom items, or other features. 
+This section documents how to create an addon for BreweryX.
+
+### Choosing a language
+
+BreweryX supports addons compiled down to Java >=17. We also support Kotlin natively.
+If you're using Kotlin in your project, please **don't** shade in its standard libraries!
+
+### Creating an addon
+
+See our [template repository](https://github.com/BreweryTeam/ExampleBreweryAddon) addons for project setup and what dependencies to include.
+
+After setting up your project, you'll need a main class that extends BreweryAddon and implements the `onAddonEnable` method.
+
+
+<Tabs syncKey="addon-mainclass">
+    <TabItem label="Java">
+```java title="MyAddon.java" frame="code"
+import com.dre.brewery.api.addons.BreweryAddon;
+import com.dre.brewery.api.addons.AddonInfo;    
+
+@AddonInfo(name = "MyAddon", version = "1.0", author = "Jsinco")
+public class MyAddon extends BreweryAddon {
+    @Override
+    public void onAddonEnable() {
+        // Code which is executed when MyAddon is enabled
+    }
+
+    @Override
+    public void onAddonDisable() {
+        // Code which is executed when BreweryX is disabled
+    }
+
+    @Override
+    public void onBreweryReload() {
+        // Code which is executed when `/breweryx reload` is executed
+    }
+}
+```
+    </TabItem>
+    <TabItem label="Kotlin">
+```kotlin title="MyAddon.kt" frame="code"
+import com.dre.brewery.api.addons.BreweryAddon
+import com.dre.brewery.api.addons.AddonInfo
+
+@AddonInfo(name = "MyAddon", version = "1.0", author = "Jsinco")
+class MyAddon : BreweryAddon() {
+    override fun onAddonEnable() {
+        // Code which is executed when MyAddon is enabled
+    }
+
+    override fun onAddonDisable() {
+        // Code which is executed when BreweryX is disabled
+    }
+
+    override fun onBreweryReload() {
+        // Code which is executed when `/breweryx reload` is executed
+    }
+}
+```
+    </TabItem>
+</Tabs>
