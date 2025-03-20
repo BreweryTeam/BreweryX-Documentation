@@ -1,0 +1,92 @@
+---
+title: "Plugin API"
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components";
+import { LatestBreweryxVersion } from "@/components/docs/latest-breweryx-version";
+
+If you're a developer looking to extend your plugin's functionality with BreweryX, you've come to the right place.  
+On this page, we'll walk through how to set up BreweryX's API and start writing your own custom features.
+
+## Repository and Dependency
+
+**Latest release: <code><LatestBreweryxVersion client:only /></code>**
+
+<Tabs syncKey="build-tool">
+    <TabItem label="Gradle (KTS)">
+```kotlin
+repositories {
+    maven("https://repo.jsinco.dev/releases")
+}
+
+dependencies {
+    compileOnly("com.dre.brewery:BreweryX:%VERSION%")
+}
+```
+    </TabItem>
+        <TabItem label="Gradle (Groovy)">
+```groovy
+repositories {
+    maven {
+        url "https://repo.jsinco.dev/releases"
+    }
+}
+
+dependencies {
+    compileOnly "com.dre.brewery:BreweryX:%VERSION%"
+}
+```
+    </TabItem>
+    <TabItem label="Maven">
+```xml
+<repositories>
+    <repository>
+        <id>jsinco-repo</id>
+        <url>https://repo.jsinco.dev/releases</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>com.dre.brewery</groupId>
+        <artifactId>BreweryX</artifactId>
+        <version>%VERSION%</version>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
+```
+    </TabItem>
+</Tabs>
+
+## Usage
+
+We offer a variety of utilities and events within BreweryX's [`api`](https://github.com/BreweryTeam/BreweryX/tree/master/src/main/java/com/dre/brewery/api) package.
+
+### Example
+
+<Tabs syncKey="example-code">
+    <TabItem label="Java">
+```java title="PlayerListener.java" frame="code"
+// Checking if an item is a BreweryX potion
+@EventHandler
+public void onPlayerInteract(PlayerInteractEvent event) {
+    ItemStack item = event.getItem();
+    if (BreweryApi.isBrew(item)) {
+        event.getPlayer().sendMessage("This is a BreweryX potion!");
+    }
+}
+```
+    </TabItem>
+    <TabItem label="Kotlin">
+```kotlin title="PlayerListener.kt" frame="code"
+// Checking if an item is a BreweryX potion
+@EventHandler
+fun onPlayerInteract(event: PlayerInteractEvent) {
+    val item = event.item
+    if (BreweryApi.isBrew(item)) {
+        event.player.sendMessage("This is a BreweryX potion!")
+    }
+}
+```
+    </TabItem>
+</Tabs>

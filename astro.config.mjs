@@ -38,6 +38,11 @@ export default defineConfig({
                             autogenerate: { directory: "docs/for-server-owners/config/" },
                             collapsed: true,
                         },
+                        {
+                            label: "Commands",
+                            autogenerate: {directory: "docs/for-server-owners/commands/"},
+                            collapsed: true,
+                        },
                     ],
                 },
                 {
