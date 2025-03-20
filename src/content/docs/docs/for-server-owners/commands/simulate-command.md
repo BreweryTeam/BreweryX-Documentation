@@ -1,5 +1,5 @@
 ---
-title: "The 'Age' Command"
+title: "The 'Simulate' Command"
 ---
 
 ### #needtodoc

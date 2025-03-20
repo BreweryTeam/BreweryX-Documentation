@@ -1,7 +1,7 @@
 ---
-title: "The 'Age' Command"
+title: "The 'Distill' Command"
 ---
 
-### #needtodoc
+#### #needtodoc
 
 ##### Permission: brewery.cmd.create

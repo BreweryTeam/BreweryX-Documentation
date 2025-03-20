@@ -1,5 +1,7 @@
 ---
-title: "The Copy Command"
+title: "The 'Copy' Command"
 ---
 
 ### #needtodoc
+
+##### Permission: brewery.cmd.copy

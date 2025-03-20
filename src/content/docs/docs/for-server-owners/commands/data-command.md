@@ -4,6 +4,8 @@ title: "The 'Data' Command"
 
 #### Syntax: `/breweryx data <save|reload>`
 
+##### Permission: brewery.cmd.datamanager
+
 The `data` command on BreweryX allows you to manage the active `DataManager` for BreweryX.
 
 The key features of this command are **saving** and **reloading** Brewery's `DataManager`.
