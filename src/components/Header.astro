@@ -1,17 +1,12 @@
 ---
 import { Image } from "astro:assets";
-
 import breweryxLogo from "@/assets/img/favicon.png";
 
-const links = {
-    left: [
-        {
-            label: "Documentation",
-            href: "/docs/welcome",
-        },
-    ],
-    right: [],
-};
+
+const links = [
+    { label: "Docs", href: "/docs/welcome" },
+    { label: "Source", href: "https://github.com/BreweryTeam/BreweryX"}
+];
 ---
 
 <div
@@ -26,10 +21,13 @@ const links = {
         </div>
         <div class="flex gap-2">
             {
-                links.left.map((link) => (
-                    <a class="font-semibold text-white no-underline" href={link.href}>
-                        {link.label}
-                    </a>
+                links.map((link, index) => (
+                    <>
+                        <a class="font-semibold text-white no-underline" href={link.href}>
+                            <span>{link.label}</span>
+                        </a>
+                        {index < links.length - 1 && <span class="text-white">|</span>}
+                    </>
                 ))
             }
         </div>

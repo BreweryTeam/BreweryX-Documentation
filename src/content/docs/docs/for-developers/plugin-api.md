@@ -2,7 +2,6 @@
 title: "Plugin API"
 ---
 
-
 <script>
 fetch('https://api.github.com/repos/BreweryTeam/BreweryX/releases/latest')
   .then(response => response.json())
@@ -16,8 +15,8 @@ If you're a developer looking to extend your plugin's functionality with Brewery
 you've come to the right place. In this page, we'll go through how you can get set up
 with BreweryX's API and start writing your own custom features.
 
-
 **Latest release: <span id="latest-version">x.y.z</span>**
+
 ```kotlin
 repositories {
     maven("https://repo.jsinco.dev/releases")
@@ -42,7 +41,3 @@ public void onPlayerInteract(PlayerInteractEvent event) {
     }
 }
 ```
-
-
-
-
