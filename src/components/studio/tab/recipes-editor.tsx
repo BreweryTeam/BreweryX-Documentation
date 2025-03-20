@@ -8,9 +8,7 @@ export function RecipesEditor({ state }: { state: EditorState }) {
         <>
             <div className="flex flex-col">
                 {recipes.map((recipe) => (
-                    <div key={recipe.id}>
-                        
-                    </div>
+                    <div key={recipe.id}></div>
                 ))}
             </div>
         </>

@@ -40,7 +40,7 @@ const state: EditorState = proxy({
                     type: "plugin",
                     id: "osmium_ingot",
                     count: 1,
-                    namespace: "nexo"
+                    namespace: "nexo",
                 },
             ],
 

@@ -2,10 +2,9 @@
 import { Image } from "astro:assets";
 import breweryxLogo from "@/assets/img/favicon.png";
 
-
 const links = [
     { label: "Docs", href: "/docs/welcome" },
-    { label: "Source", href: "https://github.com/BreweryTeam/BreweryX"}
+    { label: "Source", href: "https://github.com/BreweryTeam/BreweryX" },
 ];
 ---
 
@@ -19,14 +18,14 @@ const links = [
                 <span class="text-2xl font-bold text-white">BreweryX</span>
             </a>
         </div>
-        <div class="flex gap-2">
+        <div class="flex items-center gap-2">
             {
                 links.map((link, index) => (
                     <>
                         <a class="font-semibold text-white no-underline" href={link.href}>
                             <span>{link.label}</span>
                         </a>
-                        {index < links.length - 1 && <span class="text-white">|</span>}
+                        {index < links.length - 1 && <span class="mx-2 h-6 w-[0.5px] bg-white" />}
                     </>
                 ))
             }

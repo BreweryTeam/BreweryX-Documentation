@@ -40,7 +40,7 @@ export default defineConfig({
                         },
                         {
                             label: "Commands",
-                            autogenerate: {directory: "docs/for-server-owners/commands/"},
+                            autogenerate: { directory: "docs/for-server-owners/commands/" },
                             collapsed: true,
                         },
                     ],
