@@ -59,6 +59,27 @@ export default defineConfig({
                         },
                     ],
                 },
+                {
+                    label: "Gameplay",
+                    items: [
+                        {
+                            label: "Brewing",
+                            link: "docs/gameplay/brewing",
+                        },
+                        {
+                            label: "Aging",
+                            link: "docs/gameplay/aging",
+                        },
+                        {
+                            label: "Distilling",
+                            link: "docs/gameplay/distilling"
+                        },
+                        {
+                            label: "Sealing",
+                            link: "docs/gameplay/sealing"
+                        }
+                    ],
+                }
             ],
             expressiveCode: {
                 themes: ["slack-dark", "light-plus"],

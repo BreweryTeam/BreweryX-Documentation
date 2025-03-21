@@ -1,0 +1,24 @@
+---
+title: "Standard Configuration"
+---
+
+import { ConfigItem } from "@/components/docs/configitem";
+
+The BreweryX configuration (config.yml), is pretty straightforward. This documentation may not always be
+up to date, and we advise you to check your config.yml along with each config key's comments.
+
+## General Configuration
+
+<ConfigItem
+    cfgKey="language: en"
+    description="The translation to be used|Available types: en (English), de (German), es (Spanish), fr (French), it (Italian), ru (Russian), zh (Chinese), uk (Ukrainian)"
+/>
+<ConfigItem cfgKey='storage'>
+    <ConfigItem cfgKey='type: SQLite' description='What type of storage to use|Available types: FlatFile, MySQL, SQLite, MongoDB'/>
+    <ConfigItem cfgKey='database: brewery-data' description='The name of the database. When the database is a file, this will be the name of the file.'/>
+    <ConfigItem cfgKey='tablePrefix: brewery_' description='The prefix to use for all tables in the database'/>
+    <ConfigItem cfgKey='address: localhost' description='The address that points to your database. This should include the port (e.g. localhost:3306)' />
+</ConfigItem>
+
+
+
