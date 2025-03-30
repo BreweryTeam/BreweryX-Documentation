@@ -52,7 +52,7 @@ const config: ConfigEntryMap = {
                                             <>
                                                 Different names for bad/normal/good
                                                 <br />
-                                                (Formatting codes possible: such as &6 or hex as 𞃳) <br />
+                                                (Formatting codes possible: such as &amp;6 or hex as &amp;#123123) <br />
                                                 <br />
                                                 Example:
                                                 <br />
