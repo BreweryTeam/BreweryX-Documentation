@@ -52,7 +52,7 @@ const config: ConfigEntryMap = {
                                             <>
                                                 Different names for bad/normal/good
                                                 <br />
-                                                (Formatting codes possible: such as &6 or hex as &#123123) <br />
+                                                (Formatting codes possible: such as &6 or hex as 𞃳) <br />
                                                 <br />
                                                 Example:
                                                 <br />
@@ -139,8 +139,8 @@ function ValueDisplay({ value, type }: { value: any; type: PrimitiveType }) {
     const TYPE_COLORS: { [key: string]: string } = {
         integer: "text-green-500",
         float: "text-green-500",
-        string: "text-yellow-600",
-        boolean: "text-blue-500",
+        string: "text-[#eea158]",
+        boolean: "text-purple-400",
     };
 
     return <span className={TYPE_COLORS[type]}> {value.toString()}</span>;
@@ -193,7 +193,7 @@ export function ConfigTree({ entry }: { entry: ConfigEntry }) {
                             <div key={childEntry.key}>
                                 {PRIMITIVE_TYPES.includes(childEntry.value.type) ? ( // we can wrap the whole primitive types in a collapsible trigger
                                     <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
-                                        <div>
+                                        <div className="cursor-pointer rounded px-1 transition-colors duration-100 hover:bg-zinc-700/30">
                                             <KeyDisplay value={childEntry.key} />
                                             <ConfigTree entry={childEntry.value} />
                                         </div>
@@ -202,8 +202,12 @@ export function ConfigTree({ entry }: { entry: ConfigEntry }) {
                                     // but we wrap only the key on composite types, so children don't trigger the collapsible
                                     <>
                                         <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
-                                            <div>
+                                            <div className="cursor-pointer rounded px-1 transition-colors duration-100 hover:bg-zinc-700/30">
                                                 <KeyDisplay value={childEntry.key} />
+                                                <span className="ml-1 text-zinc-500 italic select-none">
+                                                    {" "}
+                                                    {`{${childEntry.value.type}}`}
+                                                </span>
                                             </div>
                                         </DescriptionWrapper>
                                         <ConfigTree entry={childEntry.value} />
@@ -219,7 +223,10 @@ export function ConfigTree({ entry }: { entry: ConfigEntry }) {
                 <div className="flex flex-col">
                     <div className={twMerge("flex flex-col", !entry.root && "!ml-4")}>
                         {entry.children.map((childEntry, index) => (
-                            <div key={index}>
+                            <div
+                                key={index}
+                                className="rounded px-1 transition-colors duration-100 hover:bg-zinc-700/30"
+                            >
                                 - <ConfigTree entry={childEntry} />
                             </div>
                         ))}
