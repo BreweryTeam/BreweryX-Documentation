@@ -36,6 +36,8 @@
     --sl-color-light-gray-4: #202022;
 
     --sl-color-sidebar-link-active: #57555950;
+
+    --code-background: #151517 !important;
 }
 
 /* Light mode colors. */
@@ -68,6 +70,8 @@
     --sl-color-light-gray-4: #ffffff;
 
     --sl-color-sidebar-link-active: #eeeeee;
+
+    --code-background: var(--sl-color-black) !important;
 }
 
 /* Layout */
@@ -138,14 +142,6 @@ starlight-file-tree .comment {
 /* Asides */
 .starlight-aside {
     border-radius: 0.5rem;
-}
-
-.expressive-code .frame {
-    --code-background: #151517 !important;
-}
-
-[data-theme="light"] .expressive-code .frame {
-    --code-background: var(--sl-color-black) !important;
 }
 
 /* Badges */

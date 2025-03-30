@@ -45,6 +45,8 @@
     /* custom */
     --spacing-section: 88rem;
     --spacing-header: 92rem;
+
+    --font-inter: "inter", "sans-serif"; 
 }
 
 @layer base {

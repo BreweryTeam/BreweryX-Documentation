@@ -1,5 +1,5 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Beer, BoxIcon, ChevronDown, CookingPot, type LucideIcon } from "lucide-react/icons";
+import { Beer, BoxIcon, ChevronDown, CookingPot, type LucideIcon } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 
 type SidebarEntryTab = {
