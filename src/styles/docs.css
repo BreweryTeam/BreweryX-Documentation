@@ -218,3 +218,8 @@ starlight-file-tree .comment {
     color: var(--sl-color-accent-high);
     text-decoration: underline;
 }
+
+.config-description-container ul {
+    padding-left: 1rem;
+    list-style: disc;
+}

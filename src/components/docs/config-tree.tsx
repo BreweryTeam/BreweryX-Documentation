@@ -16,6 +16,11 @@ type ConfigEntryBase<T extends Type> = {
 };
 
 export type ConfigEntryValue = ConfigEntryBase<PrimitiveType> & {
+    /**
+     * Value of the entry
+     *
+     * Also serves as the default value
+     */
     value?: any;
 };
 
@@ -40,12 +45,22 @@ function KeyDisplay({ value }: { value: string }) {
 }
 
 function ValueDisplay({ value, type }: { value: any; type: PrimitiveType }) {
+    /**
+     * regex for checking is a string needs to be escaped and surrounded with quotes
+     *
+     * not based on the spec, just a basic regex implementing this: https://stackoverflow.com/a/22235064
+     */
+    const INVALID_PLAIN_STRING_REGEX = /^(\d*\.?\d)|(.*[:{}\[\],&*#?|\-<>=!%@\\].*)$/;
+
     const TYPE_COLORS: { [key: string]: string } = {
         integer: "text-green-500",
         float: "text-green-500",
         string: "text-[#eea158]",
         boolean: "text-purple-400",
     };
+
+    if (type === "string" && INVALID_PLAIN_STRING_REGEX.test(value))
+        value = `"${(value as string).replace(/\\/g, "\\\\")}"`;
 
     return <span className={TYPE_COLORS[type]}> {value.toString()}</span>;
 }
@@ -84,7 +99,7 @@ function DescriptionWrapper({
     return (
         <Collapsible>
             <CollapsibleTrigger asChild>
-                <div className="flex cursor-pointer items-center gap-2 rounded px-1 transition-colors duration-100 hover:bg-zinc-700/30">
+                <div className="flex cursor-pointer items-center gap-2 rounded transition-colors duration-100 hover:bg-zinc-700/30">
                     <div>{children}</div>{" "}
                     {entry.description && (
                         <TooltipProvider>
@@ -107,35 +122,33 @@ function DescriptionWrapper({
     );
 }
 
-export function ConfigTree({ entry }: { entry: ConfigEntry }) {
+export function ConfigTree({ entry, inArray }: { entry: ConfigEntry, inArray?: boolean }) {
     switch (entry.type) {
         case "map":
             return (
-                <div className="flex flex-col">
-                    <div className="flex flex-col">
-                        {entry.children.map((childEntry) => (
-                            <div className={(!entry.root && childEntry.value.type !== "array") ? "!ml-4" : ""} key={childEntry.key}>
-                                {PRIMITIVE_TYPES.includes(childEntry.value.type) ? ( // we can wrap the whole primitive types in a collapsible trigger
+                <div className={twMerge("flex flex-col", (!entry.root && !inArray) ? "!ml-4" : "")}>
+                    {entry.children.map((childEntry) => (
+                        <div key={childEntry.key}>
+                            {PRIMITIVE_TYPES.includes(childEntry.value.type) ? ( // we can wrap the whole primitive types in a collapsible trigger
+                                <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
+                                    <KeyDisplay value={childEntry.key} />
+                                    <ConfigTree entry={childEntry.value} />
+                                </DescriptionWrapper>
+                            ) : (
+                                // but we wrap only the key on composite types, so children don't trigger the collapsible
+                                <>
                                     <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
                                         <KeyDisplay value={childEntry.key} />
-                                        <ConfigTree entry={childEntry.value} />
+                                        <span className="ml-1 text-zinc-500 italic select-none">
+                                            {" "}
+                                            {`{${childEntry.value.type}}`}
+                                        </span>
                                     </DescriptionWrapper>
-                                ) : (
-                                    // but we wrap only the key on composite types, so children don't trigger the collapsible
-                                    <>
-                                        <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
-                                            <KeyDisplay value={childEntry.key} />
-                                            <span className="ml-1 text-zinc-500 italic select-none">
-                                                {" "}
-                                                {`{${childEntry.value.type}}`}
-                                            </span>
-                                        </DescriptionWrapper>
-                                        <ConfigTree entry={childEntry.value} />
-                                    </>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                                    <ConfigTree entry={childEntry.value} />
+                                </>
+                            )}
+                        </div>
+                    ))}
                 </div>
             );
         case "array":
@@ -148,7 +161,7 @@ export function ConfigTree({ entry }: { entry: ConfigEntry }) {
                                 className="flex gap-1 rounded px-1 transition-colors duration-100 hover:bg-zinc-700/30"
                             >
                                 <span>-</span>
-                                <ConfigTree entry={childEntry} />
+                                <ConfigTree inArray entry={childEntry} />
                             </div>
                         ))}
                     </div>
