@@ -212,3 +212,9 @@ starlight-file-tree .comment {
 .content-panel #_top {
     font-weight: 800 !important;
 }
+
+/* Configs */
+.config-description-container a {
+    color: var(--sl-color-accent-high);
+    text-decoration: underline;
+}

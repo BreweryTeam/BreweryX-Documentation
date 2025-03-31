@@ -15,118 +15,21 @@ type ConfigEntryBase<T extends Type> = {
     description?: ReactNode;
 };
 
-type ConfigEntryValue = ConfigEntryBase<PrimitiveType> & {
+export type ConfigEntryValue = ConfigEntryBase<PrimitiveType> & {
     value?: any;
 };
 
-type ConfigEntryMap = ConfigEntryBase<"map"> & {
+export type ConfigEntryMap = ConfigEntryBase<"map"> & {
     children: { key: string; value: ConfigEntry }[];
 };
 
-type ConfigEntryArray = ConfigEntryBase<"array"> & {
+export type ConfigEntryArray = ConfigEntryBase<"array"> & {
     children: ConfigEntry[];
 };
 
-type ConfigEntry = ConfigEntryValue | ConfigEntryMap | ConfigEntryArray;
+export type ConfigEntry = ConfigEntryValue | ConfigEntryMap | ConfigEntryArray;
 
 const PRIMITIVE_TYPES = ["string", "boolean", "integer", "float"];
-
-const config: ConfigEntryMap = {
-    root: true,
-    type: "map",
-    children: [
-        {
-            key: "recipes",
-            value: {
-                type: "map",
-                children: [
-                    {
-                        key: "recipe1",
-                        value: {
-                            type: "map",
-                            children: [
-                                {
-                                    key: "name",
-                                    value: {
-                                        type: "string",
-                                        value: "Cold Brew/Temperate Brew/Warm Brew",
-                                        description: (
-                                            <>
-                                                Different names for bad/normal/good
-                                                <br />
-                                                (Formatting codes possible: such as &amp;6 or hex as &amp;#123123){" "}
-                                                <br />
-                                                <br />
-                                                Example:
-                                                <br />
-                                                <code>name: "Worst drink/Good Drink/Best drink i had in my entire life!"</code>
-                                            </>
-                                        ),
-                                    },
-                                },
-                                {
-                                    key: "ingredients",
-                                    value: {
-                                        type: "array",
-                                        children: [
-                                            {
-                                                type: "string",
-                                                value: "Diamond/1",
-                                            },
-                                            {
-                                                type: "string",
-                                                value: "Spruce_Planks/8",
-                                            },
-                                            {
-                                                type: "string",
-                                                value: "Bedrock/1",
-                                            },
-                                            {
-                                                type: "string",
-                                                value: "ex-item/4",
-                                            },
-                                        ],
-                                    },
-                                },
-                                {
-                                    key: "cookingtime",
-                                    value: {
-                                        type: "integer",
-                                        value: 3,
-                                        description: "Cooking Time",
-                                    },
-                                },
-                                {
-                                    key: "distillruns",
-                                    value: {
-                                        type: "integer",
-                                        value: 2,
-                                        description: "Distill Runs",
-                                    },
-                                },
-                                {
-                                    key: "distilltime",
-                                    value: {
-                                        type: "integer",
-                                        value: 60,
-                                        description: "Distill Time",
-                                    },
-                                },
-                                {
-                                    key: "glint",
-                                    value: {
-                                        type: "boolean",
-                                        value: true,
-                                    },
-                                },
-                            ],
-                        },
-                    },
-                ],
-            },
-        },
-    ],
-};
 
 function KeyDisplay({ value }: { value: string }) {
     return (
@@ -166,7 +69,7 @@ function Description({ entry, entryKey }: { entry: ConfigEntry; entryKey: string
 
             {entry.description && (
                 <div className="border-t border-zinc-700 bg-zinc-900/40 p-3">
-                    <p className="font-sans text-xs text-zinc-300">{entry.description}</p>
+                    <p className="config-description-container font-sans text-xs text-zinc-300">{entry.description}</p>
                 </div>
             )}
         </div>
@@ -209,9 +112,9 @@ export function ConfigTree({ entry }: { entry: ConfigEntry }) {
         case "map":
             return (
                 <div className="flex flex-col">
-                    <div className={twMerge("flex flex-col", !entry.root && "!ml-4")}>
+                    <div className="flex flex-col">
                         {entry.children.map((childEntry) => (
-                            <div key={childEntry.key}>
+                            <div className={(!entry.root && childEntry.value.type !== "array") ? "!ml-4" : ""} key={childEntry.key}>
                                 {PRIMITIVE_TYPES.includes(childEntry.value.type) ? ( // we can wrap the whole primitive types in a collapsible trigger
                                     <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
                                         <KeyDisplay value={childEntry.key} />
@@ -242,9 +145,10 @@ export function ConfigTree({ entry }: { entry: ConfigEntry }) {
                         {entry.children.map((childEntry, index) => (
                             <div
                                 key={index}
-                                className="rounded px-1 transition-colors duration-100 hover:bg-zinc-700/30"
+                                className="flex gap-1 rounded px-1 transition-colors duration-100 hover:bg-zinc-700/30"
                             >
-                                - <ConfigTree entry={childEntry} />
+                                <span>-</span>
+                                <ConfigTree entry={childEntry} />
                             </div>
                         ))}
                     </div>
@@ -258,7 +162,7 @@ export function ConfigTree({ entry }: { entry: ConfigEntry }) {
     }
 }
 
-export function ConfigContainer() {
+export function ConfigContainer({ config }: { config: ConfigEntry }) {
     return (
         <div className="not-content !my-2 rounded-lg border border-zinc-800 bg-[var(--code-background)] px-3 py-2 font-[monospace]">
             <ConfigTree entry={config} />
