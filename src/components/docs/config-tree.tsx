@@ -2,6 +2,8 @@ import { type PropsWithChildren, type ReactNode } from "react";
 import "@/styles/tailwind.css";
 import { twMerge } from "tailwind-merge";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "../ui/collapsible";
+import { Info } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
 type PrimitiveType = "string" | "boolean" | "integer" | "float";
 type CompositeType = "array" | "map";
@@ -52,13 +54,12 @@ const config: ConfigEntryMap = {
                                             <>
                                                 Different names for bad/normal/good
                                                 <br />
-                                                (Formatting codes possible: such as &amp;6 or hex as &amp;#123123) <br />
+                                                (Formatting codes possible: such as &amp;6 or hex as &amp;#123123){" "}
+                                                <br />
                                                 <br />
                                                 Example:
                                                 <br />
-                                                <code>
-                                                    name: "Worst drink/Good Drink/Best drink i had in my entire life!"
-                                                </code>
+                                                <code>name: "Worst drink/Good Drink/Best drink i had in my entire life!"</code>
                                             </>
                                         ),
                                     },
@@ -148,21 +149,25 @@ function ValueDisplay({ value, type }: { value: any; type: PrimitiveType }) {
 
 function Description({ entry, entryKey }: { entry: ConfigEntry; entryKey: string }) {
     return (
-        <div className="mx-2 my-1 flex flex-col gap-0 rounded-lg bg-zinc-800 p-3 font-[monospace] text-sm text-zinc-100">
-            <div className="flex gap-1">
-                <span className="text-zinc-400">Key:</span>
-                <span>{entryKey}</span>
-            </div>
+        <div className="mx-2 my-1 overflow-hidden rounded-lg border border-zinc-700 bg-zinc-800 text-sm text-zinc-100 shadow">
+            <div className="p-3 font-[monospace] text-zinc-400">
+                <div className="flex flex-col gap-0">
+                    <div className="flex gap-2">
+                        <span>Key:</span>
+                        <span className="text-zinc-200">{entryKey}</span>
+                    </div>
 
-            <div className="flex gap-1">
-                <span className="text-zinc-400">Type:</span>
-                <span className="text-cyan-400">{entry.type}</span>
+                    <div className="flex gap-2">
+                        <span>Type:</span>
+                        <span className="text-cyan-400">{entry.type}</span>
+                    </div>
+                </div>
             </div>
 
             {entry.description && (
-                <p className="font-inter !mt-3 rounded-lg bg-zinc-900/50 p-2 text-sm text-zinc-300">
-                    {entry.description}
-                </p>
+                <div className="border-t border-zinc-700 bg-zinc-900/40 p-3">
+                    <p className="font-sans text-xs text-zinc-300">{entry.description}</p>
+                </div>
             )}
         </div>
     );
@@ -175,7 +180,23 @@ function DescriptionWrapper({
 }: { entry: ConfigEntry; entryKey: string } & PropsWithChildren) {
     return (
         <Collapsible>
-            <CollapsibleTrigger asChild>{children}</CollapsibleTrigger>
+            <CollapsibleTrigger asChild>
+                <div className="flex cursor-pointer items-center gap-2 rounded px-1 transition-colors duration-100 hover:bg-zinc-700/30">
+                    <div>{children}</div>{" "}
+                    {entry.description && (
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger>
+                                    <Info className="text-zinc-500" size="1rem" strokeWidth={2.5} />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>Click the line to show info and description</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    )}
+                </div>
+            </CollapsibleTrigger>
             <CollapsibleContent>
                 <Description entry={entry} entryKey={entryKey} />
             </CollapsibleContent>
@@ -193,22 +214,18 @@ export function ConfigTree({ entry }: { entry: ConfigEntry }) {
                             <div key={childEntry.key}>
                                 {PRIMITIVE_TYPES.includes(childEntry.value.type) ? ( // we can wrap the whole primitive types in a collapsible trigger
                                     <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
-                                        <div className="cursor-pointer rounded px-1 transition-colors duration-100 hover:bg-zinc-700/30">
-                                            <KeyDisplay value={childEntry.key} />
-                                            <ConfigTree entry={childEntry.value} />
-                                        </div>
+                                        <KeyDisplay value={childEntry.key} />
+                                        <ConfigTree entry={childEntry.value} />
                                     </DescriptionWrapper>
                                 ) : (
                                     // but we wrap only the key on composite types, so children don't trigger the collapsible
                                     <>
                                         <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
-                                            <div className="cursor-pointer rounded px-1 transition-colors duration-100 hover:bg-zinc-700/30">
-                                                <KeyDisplay value={childEntry.key} />
-                                                <span className="ml-1 text-zinc-500 italic select-none">
-                                                    {" "}
-                                                    {`{${childEntry.value.type}}`}
-                                                </span>
-                                            </div>
+                                            <KeyDisplay value={childEntry.key} />
+                                            <span className="ml-1 text-zinc-500 italic select-none">
+                                                {" "}
+                                                {`{${childEntry.value.type}}`}
+                                            </span>
                                         </DescriptionWrapper>
                                         <ConfigTree entry={childEntry.value} />
                                     </>
