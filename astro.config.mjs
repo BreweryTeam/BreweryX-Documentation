@@ -19,7 +19,8 @@ export default defineConfig({
             },
             customCss: ["./src/styles/globals.css", "./src/styles/docs.css", "./src/styles/tailwind.css"],
             social: {
-                github: "https://github.com/withastro/starlight",
+                github: "https://github.com/BreweryTeam/BreweryX",
+                discord: "https://discord.gg/3FkNaNDnta",
             },
             sidebar: [
                 {
@@ -61,25 +62,9 @@ export default defineConfig({
                 },
                 {
                     label: "Gameplay",
-                    items: [
-                        {
-                            label: "Brewing",
-                            link: "docs/gameplay/brewing",
-                        },
-                        {
-                            label: "Aging",
-                            link: "docs/gameplay/aging",
-                        },
-                        {
-                            label: "Distilling",
-                            link: "docs/gameplay/distilling"
-                        },
-                        {
-                            label: "Sealing",
-                            link: "docs/gameplay/sealing"
-                        }
-                    ],
-                }
+                    autogenerate: { directory: "docs/gameplay/" },
+                    collapsed: true,
+                },
             ],
             expressiveCode: {
                 themes: ["slack-dark", "light-plus"],
