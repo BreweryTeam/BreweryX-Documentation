@@ -122,11 +122,11 @@ function DescriptionWrapper({
     );
 }
 
-export function ConfigTree({ entry, inArray }: { entry: ConfigEntry, inArray?: boolean }) {
+export function ConfigTree({ entry, inArray }: { entry: ConfigEntry; inArray?: boolean }) {
     switch (entry.type) {
         case "map":
             return (
-                <div className={twMerge("flex flex-col", (!entry.root && !inArray) ? "!ml-4" : "")}>
+                <div className={twMerge("flex flex-col", !entry.root && !inArray ? "!ml-4" : "")}>
                     {entry.children.map((childEntry) => (
                         <div key={childEntry.key}>
                             {PRIMITIVE_TYPES.includes(childEntry.value.type) ? ( // we can wrap the whole primitive types in a collapsible trigger

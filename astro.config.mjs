@@ -17,7 +17,7 @@ export default defineConfig({
             logo: {
                 src: "./src/assets/img/favicon.png",
             },
-            customCss: ["./src/styles/globals.css", "./src/styles/docs.css"],
+            customCss: ["./src/styles/globals.css", "./src/styles/docs.css", "./src/styles/tailwind.css"],
             social: {
                 github: "https://github.com/withastro/starlight",
             },
