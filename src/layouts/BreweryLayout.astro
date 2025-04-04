@@ -17,5 +17,5 @@ const { disableNavBarOffset } = Astro.props;
     <div class={twMerge("overflow-y-hidden", !disableNavBarOffset && "mt-[var(--navbar-height)]")}>
         <slot />
     </div>
-    <Footer client:visible />
+    <Footer />
 </StarlightPage>

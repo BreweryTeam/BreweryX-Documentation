@@ -1,9 +1,9 @@
 import { type PropsWithChildren, type ReactNode } from "react";
 import "@/styles/tailwind.css";
 import { twMerge } from "tailwind-merge";
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "../ui/collapsible";
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { Info } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 type PrimitiveType = "string" | "boolean" | "integer" | "float";
 type CompositeType = "array" | "map";
