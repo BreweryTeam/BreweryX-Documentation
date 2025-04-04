@@ -1,6 +1,6 @@
 # The new BreweryX Documentation
 
-(in very slow progress)
+(WIP)
 
 ## Running a development server
 

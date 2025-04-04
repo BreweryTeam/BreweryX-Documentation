@@ -1,0 +1,42 @@
+---
+title: "Cauldron Items"
+---
+
+# The cauldron.yml file
+
+The `cauldron.yml` file is used to configure effects and outputs of Brewery cauldrons based on the ingredients used.
+
+## How is it used?
+
+Cauldron.yml entries are used to make cauldrons more intuitive, by giving varying cauldron particles, and specific
+`cauldron brews`. These `cauldron brews` do not have any special effects and cannot be aged or distilled.
+`cauldron brews` will be outputted by cauldrons when there is no matching recipe or when a recipe requires aging or
+distilling to be completed. You can think of these brews as 'intermediate' or 'failed' brews. Lastly, cook particles
+will always appear as long as matching ingredients have been found.
+
+## Definining a cauldron.yml entry
+
+Let's declare a `cauldron.yml` entry!
+
+```yaml title="cauldron.yml" frame="code"
+cauldron:
+  # The key of the cauldron entry. This doesn't really matter, but it must be unique.
+  exampleKey:
+    # Note: Brews declared here only come out of cauldrons when the cauldron CANNOT find a matching recipe!
+    # These entries will not override any declared recipes in your `recipes.yml` file.
+    name: Unknown Brew # The name of the brew.
+    color: BLACK # The color of the brew.
+    customModelData: 545 # The custom model data of the brew.
+    # The lore of the brew.
+    lore:
+      - You just created a completely useless brew!
+    # The ingriends that must be used to make this cauldron brew. One or more ingredients must match.
+    ingredients:
+      - Bedrock/2
+      - Diamond
+    # The cooking particles that will be used when brewing. Only ingredients have to match!
+    cookParticles:
+      - RED/5
+      - WHITE/10
+      - 800000/25
+```

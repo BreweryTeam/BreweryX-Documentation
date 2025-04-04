@@ -3,6 +3,7 @@ import "@/styles/tailwind.css";
 import { twMerge } from "tailwind-merge";
 import StarlightPage from "@astrojs/starlight/components/SimpleStarlightPage.astro";
 import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
 
 interface Props {
     disableNavBarOffset?: boolean;
@@ -16,4 +17,5 @@ const { disableNavBarOffset } = Astro.props;
     <div class={twMerge("overflow-y-hidden", !disableNavBarOffset && "mt-[var(--navbar-height)]")}>
         <slot />
     </div>
+    <Footer client:visible />
 </StarlightPage>

@@ -8,15 +8,15 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://brewery.lumamc.net",
     vite: {
         plugins: [tailwindcss()],
     },
     integrations: [
         starlight({
             title: "BreweryX",
-            logo: {
-                src: "./src/assets/img/favicon.png",
-            },
+            logo: { src: "./src/assets/img/favicon.png", alt: "BreweryX" },
+            favicon: "./favicon.png",
             customCss: ["./src/styles/globals.css", "./src/styles/docs.css", "./src/styles/tailwind.css"],
             social: {
                 github: "https://github.com/BreweryTeam/BreweryX",
@@ -63,7 +63,6 @@ export default defineConfig({
                 {
                     label: "Gameplay",
                     autogenerate: { directory: "docs/gameplay/" },
-                    collapsed: true,
                 },
             ],
             expressiveCode: {

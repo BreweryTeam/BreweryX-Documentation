@@ -13,41 +13,50 @@ namespace meta {
         name: string;
         description: string;
         image: string;
+        github: string;
     }[] = [
+        // Wasn't sure what to fill description with, just put what the general roles are atm
         {
             name: "Nadwey",
-            description: "If I leave here tomorrow",
+            description: "Maintainer",
             image: "https://github.com/Nadwey.png",
+            github: "https://github.com/Nadwey",
         },
         {
             name: "Jsinco",
-            description: "Would you still remember me?",
+            description: "Maintainer",
             image: "https://github.com/Jsinco.png",
+            github: "https://github.com/Jsinco",
         },
         {
             name: "Mitality",
-            description: "For I must be traveling on, now",
+            description: "Maintainer",
             image: "https://github.com/Mitality.png",
+            github: "https://github.com/Mitality",
         },
         {
             name: "szarkan",
-            description: "'Cause there's too many places I've got to see",
+            description: "Contributor",
             image: "https://github.com/szarkans.png",
+            github: "https://github.com/szarkans",
         },
         {
             name: "Thorinwasher",
-            description: "But if I stay here with you, girl",
+            description: "Maintainer",
             image: "https://cdn.discordapp.com/avatars/270177852157067264/99ae3852e6956e3725b175e2b12d690b.webp",
+            github: "https://github.com/Thorinwasher",
         },
         {
             name: "Tisawesomeness",
-            description: "Things just couldn't be the same",
+            description: "Maintainer",
             image: "https://github.com/Tisawesomeness.png",
+            github: "https://github.com/Tisawesomeness",
         },
         {
             name: "Aktuv",
-            description: "'Cause I'm as free as a bird now",
+            description: "Contributor",
             image: "https://github.com/Vutka1.png",
+            github: "https://github.com/Vutka1",
         },
     ];
 }
