@@ -6,16 +6,17 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 
 interface Props {
+    disableFooter?: boolean;
     disableNavBarOffset?: boolean;
 }
 
-const { disableNavBarOffset } = Astro.props;
+const { disableFooter, disableNavBarOffset } = Astro.props;
 ---
 
 <StarlightPage frontmatter={{ title: "BreweryX Documentation" }}>
     <Header />
-    <div class={twMerge("overflow-y-hidden", !disableNavBarOffset && "mt-[var(--navbar-height)]")}>
+    <div class={twMerge("overflow-y-visible", !disableNavBarOffset && "mt-[var(--navbar-height)]")}>
         <slot />
     </div>
-    <Footer />
+    {!disableFooter && <Footer />}
 </StarlightPage>

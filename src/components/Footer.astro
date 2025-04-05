@@ -1,25 +1,24 @@
----
-import { Image } from "astro:assets";
----
-
-<footer class="h-[10vh] gap-5 bg-zinc-950/85 sm:flex-row sm:gap-0">
-    <h2 class="mt-5 justify-self-center text-xl">
-        © <span id="currentYear"></span> The Brewery Team.
-    </h2>
-    <p class="justify-self-center text-sm">
-        Docs by <a class="text-pink-300" href="https://github.com/Nadwey">Nadwey</a> & <a
-            class="text-pink-300"
-            href="https://github.com/BreweryTeam/BreweryX-Documentation/graphs/contributors">contributors</a
-        > ❤️
-    </p>
+<footer class="my-4 text-zinc-400">
+    <div class="flex flex-col items-center gap-1 text-center">
+        <p class="text-zinc-200">
+            Documentation by the team & <a
+                href="https://github.com/BreweryTeam/BreweryX-Documentation/graphs/contributors"
+                class="text-pink-400 transition-colors duration-200 hover:text-pink-300"
+                target="_blank"
+            >
+                contributors
+            </a>
+            ❤️
+        </p>
+        <p class="text-sm">
+            © {new Date().getFullYear()}
+            <a
+                href="https://github.com/BreweryTeam"
+                class="text-pink-400 transition-colors duration-200 hover:text-pink-300"
+                target="_blank"
+            >
+                The Brewery Team
+            </a>. All rights reserved.
+        </p>
+    </div>
 </footer>
-
-<script>
-    // Guess I could do this in frontmatter since the year doesn't change
-    //  all that often. But I guess this works, it's just ugly.
-    const currentYear = new Date().getFullYear();
-    const yearElement = document.getElementById("currentYear");
-    if (yearElement) {
-        yearElement.textContent = currentYear.toString();
-    }
-</script>
