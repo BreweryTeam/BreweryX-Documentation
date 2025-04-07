@@ -1,21 +1,52 @@
-import { type PropsWithChildren, type ReactNode } from "react";
+import { Children, type PropsWithChildren, type ReactNode } from "react";
 import "@/styles/tailwind.css";
 import { twMerge } from "tailwind-merge";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { Info } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
-type PrimitiveType = "string" | "boolean" | "integer" | "float";
-type CompositeType = "array" | "map";
-type Type = PrimitiveType | CompositeType;
+// TODO: Come up with better names and finally decide whether I'm using BigMediumSmall or SmallMediumBig
+// TODO: Use colors from expressive code via css variables
 
-type ConfigEntryBase<T extends Type> = {
+/**
+ * Types of leaf nodes in the configuration
+ *
+ * Basically YAML primitives
+ */
+type PrimitiveType = "string" | "boolean" | "integer" | "float";
+
+/**
+ * Types with nested data
+ */
+type CompositeType = "array" | "map";
+
+/**
+ * A union of all types that can represent an actual value
+ */
+type ValueType = PrimitiveType | CompositeType;
+
+/**
+ * Represents special node types within the configuration that don't hold any meaningful data
+ */
+type CustomNodeType = "comment";
+
+/**
+ * All types that can appear in a config
+ *
+ * Ideally ValueConfigNode should have its own property in the config tree, but this component is already too verbose
+ */
+type NodeType = ValueType | CustomNodeType;
+
+type ConfigEntryBase<T extends NodeType> = {
     root?: boolean;
     type: T;
+};
+
+type ConfigEntryValue<T extends NodeType> = ConfigEntryBase<T> & {
     description?: ReactNode;
 };
 
-export type ConfigEntryValue = ConfigEntryBase<PrimitiveType> & {
+export type ConfigEntryValuePrimitive = ConfigEntryValue<PrimitiveType> & {
     /**
      * Value of the entry
      *
@@ -24,22 +55,27 @@ export type ConfigEntryValue = ConfigEntryBase<PrimitiveType> & {
     value?: any;
 };
 
-export type ConfigEntryMap = ConfigEntryBase<"map"> & {
-    children: { key: string; value: ConfigEntry }[];
+export type ConfigEntryValueMap = ConfigEntryValue<"map"> & {
+    children: ({ key: string; value: ConfigEntry } | { comment: string })[];
 };
 
-export type ConfigEntryArray = ConfigEntryBase<"array"> & {
+export type ConfigEntryValueArray = ConfigEntryValue<"array"> & {
     children: ConfigEntry[];
 };
 
-export type ConfigEntry = ConfigEntryValue | ConfigEntryMap | ConfigEntryArray;
+export type ConfigEntryCustomComment = ConfigEntryBase<"comment"> & {
+    comment: ReactNode;
+};
+
+export type ValueConfigEntry = ConfigEntryValuePrimitive | ConfigEntryValueMap | ConfigEntryValueArray;
+export type ConfigEntry = ValueConfigEntry | ConfigEntryCustomComment;
 
 const PRIMITIVE_TYPES = ["string", "boolean", "integer", "float"];
 
 function KeyDisplay({ value }: { value: string }) {
     return (
         <>
-            <span className="text-blue-500">{value}</span>:
+            <span className="text-[#599ED7]">{value}</span>:
         </>
     );
 }
@@ -53,10 +89,10 @@ function ValueDisplay({ value, type }: { value: any; type: PrimitiveType }) {
     const INVALID_PLAIN_STRING_REGEX = /^(\d*\.?\d)|(.*[:{}\[\],&*#?|\-<>=!%@\\].*)$/;
 
     const TYPE_COLORS: { [key: string]: string } = {
-        integer: "text-green-500",
-        float: "text-green-500",
-        string: "text-[#eea158]",
-        boolean: "text-purple-400",
+        integer: "text-[#B5CEA8]",
+        float: "text-[#B5CEA8]",
+        string: "text-[#CE9178]",
+        boolean: "text-[#599ED7]",
     };
 
     if (type === "string" && INVALID_PLAIN_STRING_REGEX.test(value))
@@ -65,7 +101,7 @@ function ValueDisplay({ value, type }: { value: any; type: PrimitiveType }) {
     return <span className={TYPE_COLORS[type]}> {value.toString()}</span>;
 }
 
-function Description({ entry, entryKey }: { entry: ConfigEntry; entryKey: string }) {
+function Description({ entry, entryKey }: { entry: ValueConfigEntry; entryKey: string }) {
     return (
         <div className="mx-2 my-1 overflow-hidden rounded-lg border border-zinc-700 bg-zinc-800 text-sm text-zinc-100 shadow">
             <div className="p-3 font-[monospace] text-zinc-400">
@@ -95,7 +131,7 @@ function DescriptionWrapper({
     entry,
     entryKey,
     children,
-}: { entry: ConfigEntry; entryKey: string } & PropsWithChildren) {
+}: { entry: ValueConfigEntry; entryKey: string } & PropsWithChildren) {
     return (
         <Collapsible>
             <CollapsibleTrigger asChild>
@@ -127,28 +163,42 @@ export function ConfigTree({ entry, inArray }: { entry: ConfigEntry; inArray?: b
         case "map":
             return (
                 <div className={twMerge("flex flex-col", !entry.root && !inArray ? "!ml-4" : "")}>
-                    {entry.children.map((childEntry) => (
-                        <div key={childEntry.key}>
-                            {PRIMITIVE_TYPES.includes(childEntry.value.type) ? ( // we can wrap the whole primitive types in a collapsible trigger
-                                <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
-                                    <KeyDisplay value={childEntry.key} />
-                                    <ConfigTree entry={childEntry.value} />
-                                </DescriptionWrapper>
-                            ) : (
-                                // but we wrap only the key on composite types, so children don't trigger the collapsible
-                                <>
-                                    <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
+                    {entry.children.map((childEntry) =>
+                        // TODO: Fix typescript
+                        childEntry?.comment ? (
+                            // Comments in maps don't require a full ConfigEntryCustomComment for comfort, so we have to create a new one
+                            <ConfigTree
+                                entry={{
+                                    type: "comment",
+                                    comment: childEntry.comment,
+                                }}
+                            ></ConfigTree>
+                        ) : (
+                            <div key={childEntry.key}>
+                                {PRIMITIVE_TYPES.includes(childEntry.value.type) ? ( // we can wrap the whole primitive types in a collapsible trigger
+                                    <DescriptionWrapper
+                                        entry={childEntry.value as ValueConfigEntry}
+                                        entryKey={childEntry.key}
+                                    >
                                         <KeyDisplay value={childEntry.key} />
-                                        <span className="ml-1 text-zinc-500 italic select-none">
-                                            {" "}
-                                            {`{${childEntry.value.type}}`}
-                                        </span>
+                                        <ConfigTree entry={childEntry.value} />
                                     </DescriptionWrapper>
-                                    <ConfigTree entry={childEntry.value} />
-                                </>
-                            )}
-                        </div>
-                    ))}
+                                ) : (
+                                    // but we wrap only the key on composite types, so children don't trigger the collapsible
+                                    <>
+                                        <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
+                                            <KeyDisplay value={childEntry.key} />
+                                            <span className="ml-1 text-zinc-500 italic select-none">
+                                                {" "}
+                                                {`{${childEntry.value.type}}`}
+                                            </span>
+                                        </DescriptionWrapper>
+                                        <ConfigTree entry={childEntry.value} />
+                                    </>
+                                )}
+                            </div>
+                        )
+                    )}
                 </div>
             );
         case "array":
@@ -172,13 +222,20 @@ export function ConfigTree({ entry, inArray }: { entry: ConfigEntry; inArray?: b
         case "integer":
         case "string":
             return <ValueDisplay type={entry.type} value={entry.value} />;
+        case "comment":
+            return <div className="text-[#7AA468]">{entry.comment}</div>;
     }
 }
 
 export function ConfigContainer({ config }: { config: ConfigEntry }) {
     return (
-        <div className="not-content !my-2 rounded-lg border border-zinc-800 bg-[var(--code-background)] px-3 py-2 font-[monospace]">
-            <ConfigTree entry={config} />
+        <div className="not-content !my-2 flex flex-col rounded-lg border border-[#333333] overflow-hidden">
+            <div className="bg-[#252526] text-white px-4 py-1">file.yml</div> {/* TODO: Make this a prop */}
+            <div className="overflow-x-scroll bg-[#0f0f12] px-6 py-4 font-[monospace] text-nowrap">
+                <div className="border-l border-zinc-800 pl-4">
+                    <ConfigTree entry={config} />
+                </div>
+            </div>
         </div>
     );
 }
