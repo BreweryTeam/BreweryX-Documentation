@@ -165,7 +165,7 @@ export function ConfigTree({ entry, inArray }: { entry: ConfigEntry; inArray?: b
                 <div className={twMerge("flex flex-col", !entry.root && !inArray ? "!ml-4" : "")}>
                     {entry.children.map((childEntry) =>
                         // TODO: Fix typescript
-                        childEntry?.comment ? (
+                        "comment" in childEntry ? (
                             // Comments in maps don't require a full ConfigEntryCustomComment for comfort, so we have to create a new one
                             <ConfigTree
                                 entry={{
@@ -186,7 +186,7 @@ export function ConfigTree({ entry, inArray }: { entry: ConfigEntry; inArray?: b
                                 ) : (
                                     // but we wrap only the key on composite types, so children don't trigger the collapsible
                                     <>
-                                        <DescriptionWrapper entry={childEntry.value} entryKey={childEntry.key}>
+                                        <DescriptionWrapper entry={childEntry.value as ValueConfigEntry} entryKey={childEntry.key}>
                                             <KeyDisplay value={childEntry.key} />
                                             <span className="ml-1 text-zinc-500 italic select-none">
                                                 {" "}
