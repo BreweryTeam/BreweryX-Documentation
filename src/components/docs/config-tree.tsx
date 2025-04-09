@@ -55,8 +55,10 @@ export type ConfigEntryValuePrimitive = ConfigEntryValue<PrimitiveType> & {
     value?: any;
 };
 
+export type ConfigEntryValueMapChild = { key: string; value: ConfigEntry } | { comment: string  | ReactNode };
+
 export type ConfigEntryValueMap = ConfigEntryValue<"map"> & {
-    children: ({ key: string; value: ConfigEntry } | { comment: string })[];
+    children: ConfigEntryValueMapChild[];
 };
 
 export type ConfigEntryValueArray = ConfigEntryValue<"array"> & {
@@ -158,47 +160,54 @@ function DescriptionWrapper({
     );
 }
 
+function ConfigTreeMapChild({ entry }: { entry: ConfigEntryValueMapChild }) {
+    if ("comment" in entry) {
+        return (
+            <ConfigTree
+                entry={{
+                    type: "comment",
+                    comment: entry.comment,
+                }}
+            />
+        );
+    }
+
+    // If the value has a type of primitive, wrap the whole entry in a DescriptionWrapper
+    // (see the final return)
+    if (PRIMITIVE_TYPES.includes(entry.value.type)) {
+        return (
+            <DescriptionWrapper entry={entry.value as ValueConfigEntry} entryKey={entry.key}>
+                <KeyDisplay value={entry.key} />
+                <ConfigTree entry={entry.value} />
+            </DescriptionWrapper>
+        );
+    }
+
+    // But we can't do that on composite types, since clicking a child entry would also trigger the parent's description
+    return (
+        <>
+            {" "}
+            <DescriptionWrapper entry={entry.value as ValueConfigEntry} entryKey={entry.key}>
+                <KeyDisplay value={entry.key} />
+                <span className="ml-1 text-zinc-500 italic select-none"> {`{${entry.value.type}}`}</span>
+            </DescriptionWrapper>
+            <ConfigTree entry={entry.value} />
+        </>
+    );
+}
+
 export function ConfigTree({ entry, inArray }: { entry: ConfigEntry; inArray?: boolean }) {
     switch (entry.type) {
         case "map":
             return (
                 <div className={twMerge("flex flex-col", !entry.root && !inArray ? "!ml-4" : "")}>
-                    {entry.children.map((childEntry) =>
-                        // TODO: Fix typescript
-                        "comment" in childEntry ? (
-                            // Comments in maps don't require a full ConfigEntryCustomComment for comfort, so we have to create a new one
-                            <ConfigTree
-                                entry={{
-                                    type: "comment",
-                                    comment: childEntry.comment,
-                                }}
-                            ></ConfigTree>
-                        ) : (
-                            <div key={childEntry.key}>
-                                {PRIMITIVE_TYPES.includes(childEntry.value.type) ? ( // we can wrap the whole primitive types in a collapsible trigger
-                                    <DescriptionWrapper
-                                        entry={childEntry.value as ValueConfigEntry}
-                                        entryKey={childEntry.key}
-                                    >
-                                        <KeyDisplay value={childEntry.key} />
-                                        <ConfigTree entry={childEntry.value} />
-                                    </DescriptionWrapper>
-                                ) : (
-                                    // but we wrap only the key on composite types, so children don't trigger the collapsible
-                                    <>
-                                        <DescriptionWrapper entry={childEntry.value as ValueConfigEntry} entryKey={childEntry.key}>
-                                            <KeyDisplay value={childEntry.key} />
-                                            <span className="ml-1 text-zinc-500 italic select-none">
-                                                {" "}
-                                                {`{${childEntry.value.type}}`}
-                                            </span>
-                                        </DescriptionWrapper>
-                                        <ConfigTree entry={childEntry.value} />
-                                    </>
-                                )}
-                            </div>
-                        )
-                    )}
+                    {entry.children.map((childEntry) => (
+                        // so uhh, I don't really want to make comments require keys, so we just supply one, when it exists
+                        // we don't really require performance here anyways
+                        //
+                        // - Nadwey
+                        <ConfigTreeMapChild key={("key" in childEntry && childEntry.key) || null} entry={childEntry} />
+                    ))}
                 </div>
             );
         case "array":
@@ -227,10 +236,10 @@ export function ConfigTree({ entry, inArray }: { entry: ConfigEntry; inArray?: b
     }
 }
 
-export function ConfigContainer({ config }: { config: ConfigEntry }) {
+export function ConfigContainer({ config, filename }: { config: ConfigEntry, filename?: string }) {
     return (
-        <div className="not-content !my-2 flex flex-col rounded-lg border border-[#333333] overflow-hidden">
-            <div className="bg-[#252526] text-white px-4 py-1">file.yml</div> {/* TODO: Make this a prop */}
+        <div className="not-content !my-2 flex flex-col overflow-hidden rounded-lg border border-[#333333]">
+            <div className="bg-[#252526] px-4 py-1 text-white">{filename || "config.yml"}</div>
             <div className="overflow-x-scroll bg-[#0f0f12] px-6 py-4 font-[monospace] text-nowrap">
                 <div className="border-l border-zinc-800 pl-4">
                     <ConfigTree entry={config} />

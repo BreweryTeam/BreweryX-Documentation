@@ -8,6 +8,16 @@ const config: ConfigEntryValueMap = {
             comment: "# I am a comment"
         },
         {
+            comment: "#"
+        },
+        {
+            comment: <>
+                # I am a<br />
+                # multiline<br />
+                # comment that uses <span className="font-serif font-black text-white">React</span>
+            </>
+        },
+        {
             key: "language",
             value: {
                 type: "string",
@@ -75,9 +85,6 @@ const config: ConfigEntryValueMap = {
                 children: [
                     {
                         comment: "# Copypasta for testing"
-                    },
-                    {
-                        comment: "# Remember to remove"
                     },
                     {
                         comment: "# My name is Walter Hartwell White. I live at 308 Negra Arroyo Lane, Albuquerque, New Mexico, 87104. This is my confession. If you're watching this tape, I'm probably dead, murdered by my brother-in-law Hank Schrader. Hank has been building a meth empire for over a year now and using me as his chemist. Shortly after my 50th birthday, Hank came to me with a rather, shocking proposition. He asked that I use my chemistry knowledge to cook methamphetamine, which he would then sell using his connections in the drug world. Connections that he made through his career with the DEA. I was... astounded, I... I always thought that Hank was a very moral man and I was... thrown, confused, but I was also particularly vulnerable at the time, something he knew and took advantage of. I was reeling from a cancer diagnosis that was poised to bankrupt my family. Hank took me on a ride along, and showed me just how much money even a small meth operation could make. And I was weak. I didn't want my family to go into financial ruin so I agreed. Every day, I think back at that moment with regret. I quickly realized that I was in way over my head, and Hank had a partner, a man named Gustavo Fring, a businessman. Hank essentially sold me into servitude to this man, and when I tried to quit, Fring threatened my family. I didn't know where to turn. Eventually, Hank and Fring had a falling out. From what I can gather, Hank was always pushing for a greater share of the business, to which Fring flatly refused to give him, and things escalated. Fring was able to arrange, uh I guess I guess you call it a \"hit\" on my brother-in-law, and failed, but Hank was seriously injured, and I wound up paying his medical bills which amounted to a little over $177,000. Upon recovery, Hank was bent on revenge, working with a man named Hector Salamanca, he plotted to kill Fring, and did so. In fact, the bomb that he used was built by me, and he gave me no option in it. I have often contemplated suicide, but I'm a coward. I wanted to go to the police, but I was frightened. Hank had risen in the ranks to become the head of the Albuquerque DEA, and about that time, to keep me in line, he took my children from me. For 3 months he kept them. My wife, who up until that point, had no idea of my criminal activities, was horrified to learn what I had done, why Hank had taken our children. We were scared. I was in Hell, I hated myself for what I had brought upon my family. Recently, I tried once again to quit, to end this nightmare, and in response, he gave me this. I can't take this anymore. I live in fear every day that Hank will kill me, or worse, hurt my family. I... All I could think to do was to make this video in hope that the world will finally see this man, for what he really is."
@@ -163,10 +170,10 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         Toggles players waking up at their specified <code>home</code> locations when logging in after
                         excessive drinking. (See below!)
-                    </p>
+                    </>
                 ),
             },
         },
@@ -176,7 +183,7 @@ const config: ConfigEntryValueMap = {
                 value: "cmd: home",
                 type: "string",
                 description: (
-                    <p>
+                    <>
                         Determines how BreweryX should handle home behavior for players after excessive drinking.
                         <br />
                         <br />
@@ -190,7 +197,7 @@ const config: ConfigEntryValueMap = {
                                 <code>bed</code> - Teleports players to their bed spawn point.
                             </li>
                         </ul>
-                    </p>
+                    </>
                 ),
             },
         },
@@ -200,10 +207,10 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         If players should "wake up" at a random place when offline for some time after drinking (the
                         places have to be defined with <code>/brew wakeup add</code> by an admin)
-                    </p>
+                    </>
                 ),
             },
         },
@@ -213,10 +220,10 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         Toggle whether or not players should have to try logging in multiple times before being able to
                         connect to the server when extremely drunk.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -226,9 +233,9 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         If players should <i>faint</i> and get kicked from the server when they drink too much.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -238,11 +245,11 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         If players should <i>puke</i> up items (defined below) when they drink too much.
                         <br />
                         The items can not be collected and stay on the ground until they despawn after a short period.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -251,11 +258,11 @@ const config: ConfigEntryValueMap = {
             value: {
                 type: "array",
                 description: (
-                    <p>
+                    <>
                         Items that are spewed out from the mouths of players when they drink too much.
                         <br />
                         These items are not collectable and will despawn after a short period.
-                    </p>
+                    </>
                 ),
                 children: [
                     {
@@ -271,11 +278,11 @@ const config: ConfigEntryValueMap = {
                 value: 60,
                 type: "integer",
                 description: (
-                    <p>
+                    <>
                         Time in seconds until the pukeitems despawn, (Minecraft's default is 300 seconds)
                         <br />
                         If the item despawn time was changed in the spigot.yml, the pukeDespawntime changes as well.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -285,11 +292,11 @@ const config: ConfigEntryValueMap = {
                 value: 100,
                 type: "integer",
                 description: (
-                    <p>
+                    <>
                         How much the player stumbles depending on the amount of alcohol they've had.
                         <br />
                         Can be set to 0 or higher than 100.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -299,7 +306,7 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>Display the player's drunkenness to the player when they drink a brew or eats a drainItem.</p>
+                    <>Display the player's drunkenness to the player when they drink a brew or eats a drainItem.</>
                 ),
             },
         },
@@ -326,11 +333,11 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         Show particles over cauldrons when they have ingredients and a heat source.
                         <br />
                         The changing color of the particles can help with timing some recipes.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -349,11 +356,11 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         If sealing tables should be craftable. Requires a server restart to take effect.
                         <br />
                         <i>(Sealing tables can be crafted with 2 glass bottles over 4 planks!)</i>
-                    </p>
+                    </>
                 ),
             },
         },
@@ -363,11 +370,11 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         If sealing tables should be enabled.
                         <br />
                         <i>(Sealing tables can be crafted with 2 glass bottles over 4 planks!)</i>
-                    </p>
+                    </>
                 ),
             },
         },
@@ -377,12 +384,12 @@ const config: ConfigEntryValueMap = {
                 value: "SMOKER",
                 type: "string",
                 description: (
-                    <p>
+                    <>
                         By default, Brewery uses Smoker as a Sealing Table, this option allows you to change it.
                         <br />
                         <strong>IMPORTANT:</strong> It needs to be a container - meaning a block that can store items
                         <i>(e.g., SMOKER, CHEST, BLAST_FURNACE)</i>.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -401,11 +408,11 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         Always show the alcohol content on the item. If false, it will only show in the brewing stand.
                         <br />
                         Sealed brews will not show the alcohol content regardless of this setting.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -415,11 +422,11 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         Always show that a brew is alcoholic by putting "Alcoholic" in the item's lore.
                         <br />
                         Sealed brews will show that a brew is alcoholic, but not its alcohol content.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -437,11 +444,11 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         If barrels are only created when the sign placed contains the word "barrel"
                         <br />
                         (or a translation when using another language).
-                    </p>
+                    </>
                 ),
             },
         },
@@ -451,11 +458,11 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         If aging in Minecraft barrels in enabled.
                         <br />
                         How many Brewery drinks can be put into them.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -465,9 +472,9 @@ const config: ConfigEntryValueMap = {
                 value: 20,
                 type: "integer",
                 description: (
-                    <p>
+                    <>
                         Duration (in minutes) of a <code>year</code> when aging drinks.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -476,10 +483,10 @@ const config: ConfigEntryValueMap = {
             value: {
                 type: "array",
                 description: (
-                    <p>
+                    <>
                         A list of alternative command names (aliases) that can be used instead of <code>/breweryx</code>
                         . Requires a server restart to take effect.
-                    </p>
+                    </>
                 ),
                 children: [
                     {
@@ -499,7 +506,7 @@ const config: ConfigEntryValueMap = {
                 value: false,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         The used Ingredients and other brewing-data is saved to all Brewery Items. To prevent hacked
                         clients from reading what exactly was used to brew an item, the data can be encoded/scrambled.
                         <br />
@@ -511,7 +518,7 @@ const config: ConfigEntryValueMap = {
                         <br />
                         So enable this if you want to make recipe cheating harder, but don't share any brews by world
                         download, schematics, or other means.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -521,10 +528,10 @@ const config: ConfigEntryValueMap = {
                 value: -1,
                 type: "integer",
                 description: (
-                    <p>
+                    <>
                         The key used to encode Brewery item data. This key is unique to you and randomly generated by
                         Brewery when you first create your config.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -598,13 +605,13 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         Use a virtual chest when opening a Barrel to check with all other protection plugins?
                         <br />
                         This could confuse Anti-Cheat plugins, but is otherwise good to useuse this for{" "}
                         <code>Residence</code>
                         plugins or any others that don't check all cases in the <code>PlayerInteractEvent</code>.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -647,12 +654,12 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         If a Large Barrel can be opened by clicking on any of its blocks, not just Spigot or Sign. This
                         is always true for Small Barrels.
                         <br />
                         For consistency, we recommend leaving this to true.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -662,13 +669,13 @@ const config: ConfigEntryValueMap = {
                 value: 3,
                 type: "integer",
                 description: (
-                    <p>
+                    <>
                         How many rows of an inventory should different types of barrels have?
                         <br />
                         Must be an integer between 1 and 6 (a Minecraft / GUI limitation)
                         <br />
                         <i>A server restart is required for changes here to take effect.</i>
-                    </p>
+                    </>
                 ),
             },
         },
@@ -678,13 +685,13 @@ const config: ConfigEntryValueMap = {
                 value: 1,
                 type: "integer",
                 description: (
-                    <p>
+                    <>
                         How many rows of an inventory should different types of barrels have?
                         <br />
                         Must be an integer between 1 and 6 (a Minecraft / GUI limitation)
                         <br />
                         <i>A server restart is required for changes here to take effect.</i>
-                    </p>
+                    </>
                 ),
             },
         },
@@ -702,13 +709,13 @@ const config: ConfigEntryValueMap = {
                 value: true,
                 type: "boolean",
                 description: (
-                    <p>
+                    <>
                         If written chat is distorted when the player is drunk, so that it looks like drunk writing.
                         <br />
                         How much the chat is distorted depends on how drunk the player is.
                         <br />
                         Below are settings for what and how changes in chat occur.
-                    </p>
+                    </>
                 ),
             },
         },
@@ -814,11 +821,11 @@ const config: ConfigEntryValueMap = {
             value: {
                 type: "array",
                 description: (
-                    <p>
+                    <>
                         Enclose a chat text with these letters to bypass chat distortion. (Use "," as separator)
                         <br />
                         <strong>Chat example: Hello I am drunk, *I'm testing Brewery.*</strong>
-                    </p>
+                    </>
                 ),
                 children: [
                     {
@@ -837,11 +844,11 @@ const config: ConfigEntryValueMap = {
             value: {
                 type: "array",
                 description: (
-                    <p>
+                    <>
                         Words and letters that will be altered when chatting while being drunk.
                         <br />
                         Will be processed from first to last and a written sentence is altered in that order.
-                    </p>
+                    </>
                 ),
                 children: [
                     {
@@ -853,11 +860,11 @@ const config: ConfigEntryValueMap = {
                                 value: {
                                     type: "string",
                                     description: (
-                                        <p>
+                                        <>
                                             Word or letter to be replaced. (Special: "-space": replaces space,
                                             "-random": insert into random position, "-all": everything, "-start": At
                                             Beginning, "-end": At the End.)
-                                        </p>
+                                        </>
                                     ),
                                     value: "s",
                                 },
@@ -897,11 +904,11 @@ const config: ConfigEntryValueMap = {
                                 value: {
                                     type: "string",
                                     description: (
-                                        <p>
+                                        <>
                                             Word or letter to be replaced. (Special: "-space": replaces space,
                                             "-random": insert into random position, "-all": everything, "-start": At
                                             Beginning, "-end": At the End.)
-                                        </p>
+                                        </>
                                     ),
                                     value: "ch",
                                 },
