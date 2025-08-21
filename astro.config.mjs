@@ -10,6 +10,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
     site: "https://brewery.lumamc.net",
     vite: {
+        // @ts-expect-error: https://github.com/withastro/astro/issues/14030
         plugins: [tailwindcss()],
     },
     integrations: [
