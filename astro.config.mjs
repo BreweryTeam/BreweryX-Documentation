@@ -43,6 +43,10 @@ export default defineConfig({
                             link: "docs/for-server-owners/install",
                         },
                         {
+                            label: "Default Recipes",
+                            link: "docs/for-server-owners/default-recipes",
+                        },
+                        {
                             label: "Configuration",
                             autogenerate: { directory: "docs/for-server-owners/config/" },
                             collapsed: true,
