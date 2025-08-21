@@ -18,10 +18,18 @@ export default defineConfig({
             logo: { src: "./src/assets/img/favicon.png", alt: "BreweryX" },
             favicon: "./favicon.png",
             customCss: ["./src/styles/globals.css", "./src/styles/docs.css", "./src/styles/tailwind.css"],
-            social: {
-                github: "https://github.com/BreweryTeam/BreweryX",
-                discord: "https://discord.gg/3FkNaNDnta",
-            },
+            social: [
+                {
+                    icon: "github",
+                    label: "GitHub",
+                    href: "https://github.com/BreweryTeam/BreweryX"
+                },
+                {
+                    icon: "discord",
+                    label: "Discord",
+                    href: "https://discord.gg/3FkNaNDnta"
+                }
+            ],
             sidebar: [
                 {
                     label: "Welcome",
